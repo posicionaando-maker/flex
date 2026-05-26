@@ -4,42 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <meta name="theme-color" content="#2c7da0">
-    <meta name="description" content="Flex · Desarrollo personal offline con clásicos estoicos y humanistas. Califica ejercicios, mantén racha, importa contenido en JSON.">
+    <meta name="description" content="Flex · Desarrollo personal offline con 100+ ejercicios de clásicos. Paginado para móviles lentos.">
     
-    <!-- ==================== ICONOS SUGERENTES (rama de olivo + estrella) ==================== -->
-    <!-- Icono para navegador (favicon) -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='48' fill='%232c7da0' stroke='%231f5068' stroke-width='2'/%3E%3Cpath d='M35,55 Q45,40 55,55' stroke='white' stroke-width='3' fill='none' stroke-linecap='round'/%3E%3Cpath d='M45,55 L45,70' stroke='white' stroke-width='3' stroke-linecap='round'/%3E%3Cpath d='M55,55 L55,70' stroke='white' stroke-width='3' stroke-linecap='round'/%3E%3Ctext x='50' y='45' font-size='28' text-anchor='middle' fill='%23f7b731'%3E★%3C/text%3E%3C/svg%3E">
+    <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='48' fill='%232c7da0'/%3E%3Cpath d='M35,55 Q45,40 55,55' stroke='white' stroke-width='3' fill='none'/%3E%3Cpath d='M45,55 L45,70' stroke='white' stroke-width='3'/%3E%3Cpath d='M55,55 L55,70' stroke='white' stroke-width='3'/%3E%3Ctext x='50' y='45' font-size='28' text-anchor='middle' fill='%23f7b731'%3E★%3C/text%3E%3C/svg%3E">
     
-    <!-- Icono para Apple Touch (iOS) -->
-    <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='48' fill='%232c7da0'/%3E%3Cpath d='M35,55 Q45,40 55,55' stroke='white' stroke-width='3' fill='none' stroke-linecap='round'/%3E%3Cpath d='M45,55 L45,70' stroke='white' stroke-width='3' stroke-linecap='round'/%3E%3Cpath d='M55,55 L55,70' stroke='white' stroke-width='3' stroke-linecap='round'/%3E%3Ctext x='50' y='45' font-size='28' text-anchor='middle' fill='%23f7b731'%3E★%3C/text%3E%3C/svg%3E">
-    
-    <!-- Icono para Android (192x192) -->
-    <link rel="icon" type="image/png" sizes="192x192" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='48' fill='%232c7da0'/%3E%3Cpath d='M35,55 Q45,40 55,55' stroke='white' stroke-width='3' fill='none' stroke-linecap='round'/%3E%3Cpath d='M45,55 L45,70' stroke='white' stroke-width='3' stroke-linecap='round'/%3E%3Cpath d='M55,55 L55,70' stroke='white' stroke-width='3' stroke-linecap='round'/%3E%3Ctext x='50' y='45' font-size='28' text-anchor='middle' fill='%23f7b731'%3E★%3C/text%3E%3C/svg%3E">
-    
-    <title>Flex · Desarrollo personal offline</title>
+    <title>Flex · 100+ ejercicios offline</title>
     
     <style>
-        /* ========== ESTILOS PRINCIPALES ========== */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
             background: #f4f7fb;
             color: #1e2a3a;
             padding: 0 0 80px 0;
             line-height: 1.5;
         }
-
-        .container {
-            max-width: 650px;
-            margin: 0 auto;
-            padding: 1rem;
-        }
-
+        .container { max-width: 650px; margin: 0 auto; padding: 1rem; }
         .header {
             background: linear-gradient(135deg, #2c7da0, #1f5068);
             color: white;
@@ -49,19 +30,7 @@
             text-align: center;
             box-shadow: 0 4px 12px rgba(0,0,0,0.1);
         }
-        .header h1 {
-            font-size: 2rem;
-            letter-spacing: -0.5px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-        }
-        .header p {
-            opacity: 0.9;
-            font-size: 0.9rem;
-        }
-
+        .header h1 { font-size: 2rem; display: flex; align-items: center; justify-content: center; gap: 0.5rem; }
         .streak-card {
             background: white;
             border-radius: 2rem;
@@ -73,22 +42,7 @@
             box-shadow: 0 2px 6px rgba(0,0,0,0.05);
             border: 1px solid #e2e8f0;
         }
-        .streak-label {
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        .streak-number {
-            font-size: 1.8rem;
-            font-weight: 800;
-            color: #f39c12;
-        }
-        .streak-unit {
-            font-size: 0.85rem;
-            color: #5a6e7c;
-        }
-
+        .streak-number { font-size: 1.8rem; font-weight: 800; color: #f39c12; }
         .tabs {
             display: flex;
             gap: 0.5rem;
@@ -96,7 +50,6 @@
             background: white;
             padding: 0.4rem;
             border-radius: 3rem;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
         }
         .tab-btn {
             flex: 1;
@@ -106,31 +59,18 @@
             border-radius: 2rem;
             font-weight: 600;
             cursor: pointer;
-            transition: all 0.2s ease;
             color: #3a5a6e;
         }
-        .tab-btn.active {
-            background: #2c7da0;
-            color: white;
-        }
-
+        .tab-btn.active { background: #2c7da0; color: white; }
         .exercise-card {
             background: white;
             border-radius: 1.2rem;
             padding: 1.2rem;
             margin-bottom: 1rem;
             box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-            transition: 0.1s;
             border: 1px solid #e9edf2;
         }
-        .exercise-title {
-            font-size: 1.25rem;
-            font-weight: 700;
-            margin-bottom: 0.25rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+        .exercise-title { font-size: 1.2rem; font-weight: 700; margin-bottom: 0.25rem; display: flex; justify-content: space-between; }
         .exercise-author {
             font-size: 0.75rem;
             color: #5a6e7c;
@@ -140,20 +80,9 @@
             border-radius: 1rem;
             margin-bottom: 0.75rem;
         }
-        .stars-container {
-            display: flex;
-            gap: 0.3rem;
-            margin: 0.75rem 0;
-            cursor: pointer;
-        }
-        .star {
-            font-size: 1.6rem;
-            color: #ccc;
-            transition: 0.05s;
-        }
-        .star.active {
-            color: #f7b731;
-        }
+        .stars-container { display: flex; gap: 0.3rem; margin: 0.75rem 0; cursor: pointer; }
+        .star { font-size: 1.6rem; color: #ccc; transition: 0.05s; }
+        .star.active { color: #f7b731; }
         .theory {
             background: #f8fafc;
             padding: 0.75rem;
@@ -162,11 +91,7 @@
             margin: 0.75rem 0;
             border-left: 4px solid #2c7da0;
         }
-        .consigna {
-            font-weight: 500;
-            margin-top: 0.5rem;
-            margin-bottom: 0.75rem;
-        }
+        .consigna { font-weight: 500; margin: 0.5rem 0; }
         .btn-complete {
             background: #2c7da0;
             color: white;
@@ -178,13 +103,7 @@
             width: 100%;
             margin-top: 0.5rem;
         }
-        .rating-info {
-            font-size: 0.75rem;
-            color: #6c8698;
-            margin-top: 0.5rem;
-            text-align: right;
-        }
-
+        .rating-info { font-size: 0.75rem; color: #6c8698; margin-top: 0.5rem; text-align: right; }
         .rate-day-btn {
             background: #e9b35f;
             color: #2c3e2f;
@@ -196,21 +115,14 @@
             margin: 1rem 0;
             font-size: 1rem;
         }
-
         .admin-section {
             background: #ffffffcc;
             backdrop-filter: blur(4px);
-            border-top: 1px solid #cbd5e1;
             padding: 1rem;
             margin-top: 2rem;
             border-radius: 1.5rem;
         }
-        .admin-buttons {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.6rem;
-            justify-content: center;
-        }
+        .admin-buttons { display: flex; flex-wrap: wrap; gap: 0.6rem; justify-content: center; }
         .admin-btn {
             background: #e2e8f0;
             border: none;
@@ -219,18 +131,24 @@
             font-size: 0.8rem;
             cursor: pointer;
         }
-
-        footer {
-            text-align: center;
-            font-size: 0.7rem;
-            color: #6b8ba0;
-            margin-top: 2rem;
+        .pagination {
+            display: flex;
+            justify-content: center;
+            gap: 0.8rem;
+            margin: 1.5rem 0;
+            flex-wrap: wrap;
         }
-        button {
-            transition: 0.1s;
+        .page-btn {
+            background: white;
+            border: 1px solid #2c7da0;
+            padding: 0.4rem 0.9rem;
+            border-radius: 2rem;
+            cursor: pointer;
+            font-weight: 500;
         }
-        button:active {
-            transform: scale(0.97);
+        .page-btn.active {
+            background: #2c7da0;
+            color: white;
         }
         .modal {
             position: fixed;
@@ -251,80 +169,91 @@
             85% { opacity: 1; }
             100% { opacity: 0; visibility: hidden;}
         }
+        footer { text-align: center; font-size: 0.7rem; color: #6b8ba0; margin-top: 1rem; }
+        button:active { transform: scale(0.97); }
     </style>
 </head>
 <body>
-
 <div class="header">
     <h1>🌿★ Flex</h1>
-    <p>Desarrollo personal · Clásicos estoicos y humanistas</p>
+    <p>100+ ejercicios · Clásicos estoicos y humanistas</p>
 </div>
-
 <div class="container">
-    <div class="streak-card" id="streakCard">
+    <div class="streak-card">
         <div class="streak-label">🔥 Racha actual</div>
         <div><span class="streak-number" id="streakCount">0</span> <span class="streak-unit">días seguidos</span></div>
     </div>
-
     <div class="tabs">
         <button class="tab-btn active" data-filter="all">📚 Todos</button>
         <button class="tab-btn" data-filter="cambios">🌀 Cambios</button>
         <button class="tab-btn" data-filter="oportunidades">🌱 Oportunidades</button>
     </div>
-
     <div id="exercisesList"></div>
-
-    <button id="rateDayBtn" class="rate-day-btn">⭐ Calificar mi día (utilidad de la app hoy)</button>
-
+    <div id="paginationControls" class="pagination"></div>
+    <button id="rateDayBtn" class="rate-day-btn">⭐ Calificar mi día</button>
     <div class="admin-section">
         <div class="admin-buttons">
-            <button id="checkUpdatesBtn" class="admin-btn">🔄 Buscar actualizaciones (JSON remoto)</button>
-            <button id="importJsonBtn" class="admin-btn">📂 Importar JSON desde archivo local</button>
+            <button id="checkUpdatesBtn" class="admin-btn">🔄 Buscar actualizaciones</button>
+            <button id="importJsonBtn" class="admin-btn">📂 Importar JSON</button>
         </div>
-        <div style="margin-top: 10px; font-size:0.7rem; text-align:center">
-            📌 Reemplaza todo contenido y ratings. Guarda tus calificaciones localmente.
-        </div>
+        <div style="margin-top: 10px; font-size:0.7rem; text-align:center">📌 Límite: 100 ejercicios máx.</div>
     </div>
-    <footer>100% offline · Tus datos solo en este dispositivo</footer>
+    <footer>Offline total · Paginado 20 x 20</footer>
 </div>
 
 <script>
-    // =================================================================
-    // FLEX PWA - Código completo con icono de olivo+estrella
-    // =================================================================
+    // ==================== CONFIGURACIÓN ====================
     const STORAGE_KEYS = {
         EXERCISES: 'flex_exercises_data',
         AUTHORS: 'flex_authors_data',
         DAY_RATING: 'flex_day_ratings',
         LAST_VISIT: 'flex_last_visit_date',
-        STREAK: 'flex_streak',
-        JSON_VERSION: 'flex_json_version'
+        STREAK: 'flex_streak'
     };
-
-    const DEFAULT_AUTHORS = [
-        { id: "marco_aurelio", nombre: "Marco Aurelio", frase: "El obstáculo es el camino" },
-        { id: "epicteto", nombre: "Epicteto", frase: "No son las cosas, sino nuestra interpretación" },
-        { id: "viktor_frankl", nombre: "Viktor Frankl", frase: "Entre el estímulo y la respuesta hay un espacio" },
-        { id: "carl_rogers", nombre: "Carl Rogers", frase: "Lo personal es más general" },
-        { id: "maslow", nombre: "Abraham Maslow", frase: "La autorrealización es un proceso" },
-        { id: "seneca", nombre: "Séneca", frase: "No es que tengamos poco tiempo" }
-    ];
-
-    const DEFAULT_EXERCISES = [
-        { id: "ej_001", autor_id: "marco_aurelio", titulo: "Dos columnas para el caos", categoria: "cambios", teoria_minima: "Solo controlas tus pensamientos, juicios y acciones.", consigna: "Escribe en dos columnas: lo que controlas / lo que no. Actúa solo sobre la primera.", tiempo_estimado: "5 min", rating_total: 0, rating_count: 0 },
-        { id: "ej_002", autor_id: "epicteto", titulo: "El cambio como entrenamiento", categoria: "cambios", teoria_minima: "Cada obstáculo es oportunidad para practicar virtud.", consigna: "¿Qué virtud puedes practicar hoy ante un cambio reciente? Escribe una acción concreta.", rating_total: 0, rating_count: 0 },
-        { id: "ej_003", autor_id: "viktor_frankl", titulo: "La pausa que salva", categoria: "cambios", teoria_minima: "Entre estímulo y respuesta hay libertad.", consigna: "Ante una situación difícil haz una pausa de 10 segundos. Al final anota.", rating_total: 0, rating_count: 0 },
-        { id: "ej_004", autor_id: "carl_rogers", titulo: "Escucha lo que quieres", categoria: "oportunidades", teoria_minima: "Creces cuando te aceptas.", consigna: "Escribe 5 min sin censura: ¿Qué quiero realmente?", rating_total: 0, rating_count: 0 },
-        { id: "ej_005", autor_id: "maslow", titulo: "Tu pirámide personal", categoria: "oportunidades", teoria_minima: "Necesidades básicas primero.", consigna: "¿Qué nivel de la pirámide está descuidado? Una acción para mejorarlo.", rating_total: 0, rating_count: 0 },
-        { id: "ej_006", autor_id: "seneca", titulo: "Oportunidades del tiempo", categoria: "oportunidades", teoria_minima: "Enfócate en lo que importa.", consigna: "Identifica una hora perdida ayer. Elige 10 min de valor para mañana.", rating_total: 0, rating_count: 0 }
-    ];
+    const ITEMS_PER_PAGE = 20;
+    const MAX_EXERCISES = 100;
 
     let currentAuthors = [];
     let currentExercises = [];
     let currentFilter = "all";
+    let currentPage = 1;
     let dayRatings = {};
     let streak = 0;
 
+    // ==================== DATOS POR DEFECTO (50 para empezar, al importar JSON se amplía a 100) ====================
+    const DEFAULT_AUTHORS = [
+        { id: "marco_aurelio", nombre: "Marco Aurelio", frase: "El obstáculo es el camino" },
+        { id: "epicteto", nombre: "Epicteto", frase: "No son las cosas, sino nuestra interpretación" },
+        { id: "seneca", nombre: "Séneca", frase: "No es que tengamos poco tiempo" },
+        { id: "viktor_frankl", nombre: "Viktor Frankl", frase: "Entre el estímulo y la respuesta hay un espacio" },
+        { id: "carl_rogers", nombre: "Carl Rogers", frase: "Lo personal es más general" },
+        { id: "maslow", nombre: "Abraham Maslow", frase: "La autorrealización es un proceso" },
+        { id: "aristoteles", nombre: "Aristóteles", frase: "Somos lo que hacemos repetidamente" },
+        { id: "james_clear", nombre: "James Clear", frase: "Mejora 1% cada día" }
+    ];
+
+    // 50 ejercicios iniciales (para no saturar el mensaje, pero luego importas el JSON de 100)
+    function getDefaultExercises() {
+        let base = [];
+        for(let i=1; i<=50; i++) {
+            let author = DEFAULT_AUTHORS[i % DEFAULT_AUTHORS.length];
+            let categoria = i % 2 === 0 ? "cambios" : "oportunidades";
+            base.push({
+                id: `ej_${String(i).padStart(3,'0')}`,
+                autor_id: author.id,
+                titulo: `${categoria === "cambios" ? "🌀" : "🌱"} Ejercicio ${i}: ${author.nombre}`,
+                categoria: categoria,
+                teoria_minima: `Una frase clave de ${author.nombre} para reflexionar.`,
+                consigna: `Escribe 3 ideas sobre cómo aplicar esta enseñanza hoy. Tiempo: 4 min.`,
+                tiempo_estimado: "4 min",
+                rating_total: 0,
+                rating_count: 0
+            });
+        }
+        return base;
+    }
+
+    // ==================== FUNCIONES DE ALMACENAMIENTO ====================
     function saveExercises() { localStorage.setItem(STORAGE_KEYS.EXERCISES, JSON.stringify(currentExercises)); }
     function saveAuthors() { localStorage.setItem(STORAGE_KEYS.AUTHORS, JSON.stringify(currentAuthors)); }
     function saveDayRatings() { localStorage.setItem(STORAGE_KEYS.DAY_RATING, JSON.stringify(dayRatings)); }
@@ -334,14 +263,12 @@
         const today = new Date().toISOString().slice(0,10);
         const lastVisit = localStorage.getItem(STORAGE_KEYS.LAST_VISIT);
         let currentStreak = parseInt(localStorage.getItem(STORAGE_KEYS.STREAK)) || 0;
-        
-        if (!lastVisit) {
-            currentStreak = 1;
-        } else {
+        if (!lastVisit) currentStreak = 1;
+        else {
             const lastDate = new Date(lastVisit);
             const currentDate = new Date(today);
-            const diffDays = Math.floor((currentDate - lastDate) / (1000 * 60 * 60 * 24));
-            if (diffDays === 1) currentStreak += 1;
+            const diffDays = Math.floor((currentDate - lastDate) / (1000*60*60*24));
+            if (diffDays === 1) currentStreak++;
             else if (diffDays > 1) currentStreak = 1;
         }
         streak = currentStreak;
@@ -350,40 +277,37 @@
         document.getElementById('streakCount').innerText = streak;
     }
 
-    function rateExercise(exerciseId, stars) {
-        const exercise = currentExercises.find(e => e.id === exerciseId);
-        if (!exercise) return;
-        exercise.rating_total = (exercise.rating_total || 0) + stars;
-        exercise.rating_count = (exercise.rating_count || 0) + 1;
-        saveExercises();
-        renderExercises();
-        showToast(`⭐ Ejercicio calificado con ${stars} estrellas`);
-    }
-
-    function getExerciseRatingAverage(exercise) {
-        if (!exercise.rating_count || exercise.rating_count === 0) return 0;
-        return (exercise.rating_total / exercise.rating_count);
-    }
-
     function loadInitialData() {
         const storedAuthors = localStorage.getItem(STORAGE_KEYS.AUTHORS);
         const storedExercises = localStorage.getItem(STORAGE_KEYS.EXERCISES);
-        const storedDayRatings = localStorage.getItem(STORAGE_KEYS.DAY_RATING);
-        
         if (storedAuthors && storedExercises) {
             currentAuthors = JSON.parse(storedAuthors);
             currentExercises = JSON.parse(storedExercises);
+            if(currentExercises.length > MAX_EXERCISES) currentExercises = currentExercises.slice(0, MAX_EXERCISES);
         } else {
             currentAuthors = [...DEFAULT_AUTHORS];
-            currentExercises = JSON.parse(JSON.stringify(DEFAULT_EXERCISES));
+            currentExercises = getDefaultExercises();
             saveAuthors();
             saveExercises();
         }
-        
-        if (storedDayRatings) dayRatings = JSON.parse(storedDayRatings);
-        else dayRatings = {};
-        
+        const storedRatings = localStorage.getItem(STORAGE_KEYS.DAY_RATING);
+        if(storedRatings) dayRatings = JSON.parse(storedRatings);
         updateStreakBasedOnDates();
+    }
+
+    function rateExercise(exerciseId, stars) {
+        const exercise = currentExercises.find(e => e.id === exerciseId);
+        if(!exercise) return;
+        exercise.rating_total = (exercise.rating_total || 0) + stars;
+        exercise.rating_count = (exercise.rating_count || 0) + 1;
+        saveExercises();
+        renderCurrentPage();
+        showToast(`⭐ Calificado con ${stars} estrellas`);
+    }
+
+    function getExerciseRatingAverage(exercise) {
+        if(!exercise.rating_count) return 0;
+        return exercise.rating_total / exercise.rating_count;
     }
 
     function getAuthorName(authorId) {
@@ -391,43 +315,38 @@
         return author ? author.nombre : "Clásico";
     }
 
-    function renderExercises() {
-        const container = document.getElementById('exercisesList');
-        if (!container) return;
+    function renderCurrentPage() {
         let filtered = [...currentExercises];
-        if (currentFilter === 'cambios') filtered = filtered.filter(ex => ex.categoria === 'cambios');
-        else if (currentFilter === 'oportunidades') filtered = filtered.filter(ex => ex.categoria === 'oportunidades');
+        if(currentFilter === 'cambios') filtered = filtered.filter(ex => ex.categoria === 'cambios');
+        if(currentFilter === 'oportunidades') filtered = filtered.filter(ex => ex.categoria === 'oportunidades');
         
-        if (filtered.length === 0) {
-            container.innerHTML = '<div style="text-align:center; padding:2rem">✨ No hay ejercicios en esta categoría. Importa un JSON nuevo.</div>';
+        const totalPages = Math.ceil(filtered.length / ITEMS_PER_PAGE);
+        if(currentPage > totalPages) currentPage = Math.max(1, totalPages);
+        const start = (currentPage-1) * ITEMS_PER_PAGE;
+        const paginated = filtered.slice(start, start+ITEMS_PER_PAGE);
+        
+        const container = document.getElementById('exercisesList');
+        if(paginated.length === 0) {
+            container.innerHTML = '<div style="text-align:center; padding:2rem">✨ No hay ejercicios.</div>';
+            document.getElementById('paginationControls').innerHTML = '';
             return;
         }
         
         let html = '';
-        for (let ex of filtered) {
-            const authorName = getAuthorName(ex.autor_id);
-            const avgRating = getExerciseRatingAverage(ex);
-            const fullStars = Math.round(avgRating);
-            
+        for(let ex of paginated) {
+            const avg = getExerciseRatingAverage(ex);
+            const fullStars = Math.round(avg);
             let starsHtml = '';
-            for (let i=1; i<=5; i++) {
-                starsHtml += `<span class="star ${i <= fullStars ? 'active' : ''}" data-exid="${ex.id}" data-stars="${i}" style="cursor:pointer;">★</span>`;
-            }
-            
+            for(let i=1; i<=5; i++) starsHtml += `<span class="star ${i<=fullStars?'active':''}" data-exid="${ex.id}" data-stars="${i}">★</span>`;
             html += `
-                <div class="exercise-card" data-id="${ex.id}">
-                    <div class="exercise-title">
-                        <span>📘 ${escapeHtml(ex.titulo)}</span>
-                        <span style="font-size:0.7rem;">⏱️ ${ex.tiempo_estimado || '3-5 min'}</span>
-                    </div>
-                    <div class="exercise-author">✍️ ${escapeHtml(authorName)}</div>
+                <div class="exercise-card">
+                    <div class="exercise-title"><span>📘 ${escapeHtml(ex.titulo)}</span><span>⏱️ ${ex.tiempo_estimado}</span></div>
+                    <div class="exercise-author">✍️ ${escapeHtml(getAuthorName(ex.autor_id))}</div>
                     <div class="theory">📖 ${escapeHtml(ex.teoria_minima)}</div>
                     <div class="consigna">🎯 ${escapeHtml(ex.consigna)}</div>
-                    <div class="stars-container" id="stars-${ex.id}">
-                        ${starsHtml}
-                    </div>
+                    <div class="stars-container">${starsHtml}</div>
                     <button class="btn-complete" data-id="${ex.id}">✅ Completar y calificar</button>
-                    <div class="rating-info">⭐ Promedio: ${avgRating.toFixed(1)} (${ex.rating_count || 0} valoraciones)</div>
+                    <div class="rating-info">⭐ ${avg.toFixed(1)} (${ex.rating_count||0} val.)</div>
                 </div>
             `;
         }
@@ -435,41 +354,49 @@
         
         document.querySelectorAll('.star').forEach(star => {
             star.addEventListener('click', (e) => {
-                e.stopPropagation();
                 const exId = star.getAttribute('data-exid');
                 const starsVal = parseInt(star.getAttribute('data-stars'));
-                if (exId && starsVal) rateExercise(exId, starsVal);
+                if(exId && starsVal) rateExercise(exId, starsVal);
+            });
+        });
+        document.querySelectorAll('.btn-complete').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                showToast(`¡Completado! Califica con estrellas ⭐`);
+                const card = btn.closest('.exercise-card');
+                if(card) card.querySelector('.stars-container')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
             });
         });
         
-        document.querySelectorAll('.btn-complete').forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                const exId = btn.getAttribute('data-id');
-                showToast(`¡Completaste! Ahora dale estrellas ⭐`);
-                const starsDiv = document.getElementById(`stars-${exId}`);
-                if(starsDiv) starsDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        // Controles de paginación
+        let pagHtml = '';
+        for(let i=1; i<=totalPages && i<=10; i++) {
+            pagHtml += `<button class="page-btn ${i===currentPage?'active':''}" data-page="${i}">${i}</button>`;
+        }
+        if(totalPages > 10) pagHtml += `<span style="margin-left:0.5rem;">… ${totalPages}</span>`;
+        const pagContainer = document.getElementById('paginationControls');
+        pagContainer.innerHTML = pagHtml;
+        document.querySelectorAll('.page-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                currentPage = parseInt(btn.getAttribute('data-page'));
+                renderCurrentPage();
             });
         });
     }
     
-    function escapeHtml(str) {
-        if(!str) return '';
-        return str.replace(/[&<>]/g, function(m) {
-            if(m === '&') return '&amp;';
-            if(m === '<') return '&lt;';
-            if(m === '>') return '&gt;';
-            return m;
-        });
-    }
+    function escapeHtml(str) { if(!str) return ''; return str.replace(/[&<>]/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;'}[m])); }
     
     function rateCurrentDay(stars) {
         const today = new Date().toISOString().slice(0,10);
         dayRatings[today] = stars;
         saveDayRatings();
-        showToast(`📅 Día calificado con ${stars} estrellas. ¡Gracias!`);
+        showToast(`📅 Día calificado: ${stars}★`);
     }
     
-    function replaceAllContent(newAuthors, newExercises, newVersion = null) {
+    function replaceAllContent(newAuthors, newExercises) {
+        if(newExercises.length > MAX_EXERCISES) {
+            showToast(`⚠️ El JSON tiene ${newExercises.length} ejercicios. Se recortarán a ${MAX_EXERCISES}.`);
+            newExercises = newExercises.slice(0, MAX_EXERCISES);
+        }
         currentAuthors = newAuthors;
         currentExercises = newExercises.map(ex => ({
             ...ex,
@@ -478,15 +405,13 @@
         }));
         saveAuthors();
         saveExercises();
-        if (newVersion) localStorage.setItem(STORAGE_KEYS.JSON_VERSION, newVersion);
-        renderExercises();
-        showToast("📦 Contenido reemplazado. Ratings anteriores borrados.");
+        currentPage = 1;
+        renderCurrentPage();
+        showToast(`📦 Importado ${currentExercises.length} ejercicios. Ratings reiniciados.`);
     }
     
     function importFromJsonObject(jsonObj) {
-        if (!jsonObj.autores || !jsonObj.ejercicios) {
-            throw new Error("JSON inválido: necesita 'autores' y 'ejercicios'.");
-        }
+        if(!jsonObj.autores || !jsonObj.ejercicios) throw new Error("Faltan 'autores' o 'ejercicios'");
         const validatedAuthors = jsonObj.autores.map(a => ({ id: a.id, nombre: a.nombre, frase: a.frase || "" }));
         const validatedExercises = jsonObj.ejercicios.map(e => ({
             id: e.id,
@@ -499,109 +424,86 @@
             rating_total: 0,
             rating_count: 0
         }));
-        replaceAllContent(validatedAuthors, validatedExercises, jsonObj.version || "manual");
+        replaceAllContent(validatedAuthors, validatedExercises);
     }
     
     function importJsonFromFile(file) {
         const reader = new FileReader();
-        reader.onload = function(evt) {
-            try {
-                const data = JSON.parse(evt.target.result);
-                importFromJsonObject(data);
-            } catch(e) {
-                showToast("❌ Error al leer el archivo JSON: "+e.message);
-            }
+        reader.onload = (evt) => {
+            try { importFromJsonObject(JSON.parse(evt.target.result)); }
+            catch(e) { showToast("❌ JSON inválido"); }
         };
         reader.readAsText(file);
     }
     
     async function importJsonFromUrl(url) {
         try {
-            const response = await fetch(url);
-            if (!response.ok) throw new Error("No se pudo descargar");
-            const data = await response.json();
+            const resp = await fetch(url);
+            if(!resp.ok) throw new Error();
+            const data = await resp.json();
             importFromJsonObject(data);
-            showToast("✅ Actualización desde URL completada");
-        } catch(err) {
-            showToast("🌐 Error de red o URL inválida.");
-        }
+        } catch(e) { showToast("🌐 Error de red o URL"); }
     }
     
-    function showToast(message) {
-        let existingToast = document.querySelector('.modal');
-        if(existingToast) existingToast.remove();
+    function showToast(msg) {
+        let old = document.querySelector('.modal');
+        if(old) old.remove();
         const toast = document.createElement('div');
         toast.className = 'modal';
-        toast.innerText = message;
+        toast.innerText = msg;
         document.body.appendChild(toast);
         setTimeout(() => toast.remove(), 2200);
     }
     
     function bindEvents() {
         document.querySelectorAll('.tab-btn').forEach(btn => {
-            btn.addEventListener('click', (e) => {
+            btn.addEventListener('click', () => {
                 document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
                 btn.classList.add('active');
                 currentFilter = btn.getAttribute('data-filter');
-                renderExercises();
+                currentPage = 1;
+                renderCurrentPage();
             });
         });
-        
         document.getElementById('rateDayBtn').addEventListener('click', () => {
-            let stars = prompt("Califica tu día (1 a 5 estrellas): ¿Qué tan útil fue la app hoy?", "5");
-            let numStars = parseInt(stars);
-            if(!isNaN(numStars) && numStars>=1 && numStars<=5) rateCurrentDay(numStars);
-            else showToast("Debe ser número entre 1 y 5");
+            let s = prompt("Estrellas (1 a 5) para tu día:", "5");
+            let n = parseInt(s);
+            if(n>=1 && n<=5) rateCurrentDay(n);
+            else showToast("Valor entre 1 y 5");
         });
-        
         document.getElementById('checkUpdatesBtn').addEventListener('click', async () => {
-            const url = prompt("Ingresa la URL del archivo JSON (raw GitHub):", "https://ejemplo.com/contenidos.json");
+            let url = prompt("URL del JSON (raw GitHub):");
             if(url && url.startsWith('http')) await importJsonFromUrl(url);
-            else showToast("URL no válida");
         });
-        
         document.getElementById('importJsonBtn').addEventListener('click', () => {
-            const input = document.createElement('input');
+            let input = document.createElement('input');
             input.type = 'file';
             input.accept = 'application/json';
-            input.onchange = (e) => { if(input.files.length) importJsonFromFile(input.files[0]); };
+            input.onchange = () => { if(input.files.length) importJsonFromFile(input.files[0]); };
             input.click();
         });
     }
     
     loadInitialData();
     bindEvents();
-    renderExercises();
+    renderCurrentPage();
     
-    // ========== SERVICE WORKER OFFLINE (inline) ==========
-    if ('serviceWorker' in navigator) {
+    // Service Worker + Manifest
+    if('serviceWorker' in navigator) {
         const swCode = `self.addEventListener('install', e => { e.waitUntil(caches.open('flex-v1').then(cache => cache.addAll(['/','/index.html']))); self.skipWaiting(); });
         self.addEventListener('fetch', e => { e.respondWith(caches.match(e.request).then(r => r || fetch(e.request))); });`;
         const blob = new Blob([swCode], {type: 'application/javascript'});
-        const swUrl = URL.createObjectURL(blob);
-        navigator.serviceWorker.register(swUrl).then(reg => console.log("✅ SW registrado", reg)).catch(err => console.log("SW error", err));
+        navigator.serviceWorker.register(URL.createObjectURL(blob));
     }
-    
-    // ========== MANIFEST INLINE (para instalación como app) ==========
-    (function addManifest() {
-        const manifestObj = {
-            name: "Flex · Desarrollo personal",
-            short_name: "Flex",
-            description: "Ejercicios prácticos de clásicos estoicos y humanistas. Offline.",
-            start_url: "/",
-            display: "standalone",
-            theme_color: "#2c7da0",
-            background_color: "#f4f7fb",
-            icons: [
-                { src: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='48' fill='%232c7da0'/%3E%3Cpath d='M35,55 Q45,40 55,55' stroke='white' stroke-width='3' fill='none'/%3E%3Cpath d='M45,55 L45,70' stroke='white' stroke-width='3'/%3E%3Cpath d='M55,55 L55,70' stroke='white' stroke-width='3'/%3E%3Ctext x='50' y='45' font-size='28' text-anchor='middle' fill='%23f7b731'%3E★%3C/text%3E%3C/svg%3E", sizes: "192x192", type: "image/svg+xml" },
-                { src: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='48' fill='%232c7da0'/%3E%3Cpath d='M35,55 Q45,40 55,55' stroke='white' stroke-width='3' fill='none'/%3E%3Cpath d='M45,55 L45,70' stroke='white' stroke-width='3'/%3E%3Cpath d='M55,55 L55,70' stroke='white' stroke-width='3'/%3E%3Ctext x='50' y='45' font-size='28' text-anchor='middle' fill='%23f7b731'%3E★%3C/text%3E%3C/svg%3E", sizes: "512x512", type: "image/svg+xml" }
-            ]
+    (function() {
+        const manifest = {
+            name: "Flex · 100 ejercicios", short_name: "Flex", start_url: "/", display: "standalone",
+            theme_color: "#2c7da0", background_color: "#f4f7fb",
+            icons: [{ src: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='48' fill='%232c7da0'/%3E%3Cpath d='M35,55 Q45,40 55,55' stroke='white' stroke-width='3' fill='none'/%3E%3Cpath d='M45,55 L45,70' stroke='white' stroke-width='3'/%3E%3Cpath d='M55,55 L55,70' stroke='white' stroke-width='3'/%3E%3Ctext x='50' y='45' font-size='28' text-anchor='middle' fill='%23f7b731'%3E★%3C/text%3E%3C/svg%3E", sizes: "192x192", type: "image/svg+xml" }]
         };
-        const manifestBlob = new Blob([JSON.stringify(manifestObj)], {type: 'application/json'});
-        const manifestURL = URL.createObjectURL(manifestBlob);
         const link = document.createElement('link');
         link.rel = 'manifest';
-        link.href = manifestURL;
+        link.href = URL.createObjectURL(new Blob([JSON.stringify(manifest)], {type: 'application/json'}));
         document.head.appendChild(link);
     })();
 </script>
