@@ -4,185 +4,43 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <meta name="theme-color" content="#2c7da0">
-    <meta name="description" content="Flex · Desarrollo personal offline con 100+ ejercicios de clásicos. Paginado para móviles lentos.">
-    
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='48' fill='%232c7da0' stroke='%231f5068' stroke-width='2'/%3E%3Cpath d='M35,55 Q45,40 55,55' stroke='white' stroke-width='3' fill='none' stroke-linecap='round'/%3E%3Cpath d='M45,55 L45,70' stroke='white' stroke-width='3' stroke-linecap='round'/%3E%3Cpath d='M55,55 L55,70' stroke='white' stroke-width='3' stroke-linecap='round'/%3E%3Ctext x='50' y='45' font-size='28' text-anchor='middle' fill='%23f7b731'%3E★%3C/text%3E%3C/svg%3E">
-    <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='48' fill='%232c7da0'/%3E%3Cpath d='M35,55 Q45,40 55,55' stroke='white' stroke-width='3' fill='none'/%3E%3Cpath d='M45,55 L45,70' stroke='white' stroke-width='3'/%3E%3Cpath d='M55,55 L55,70' stroke='white' stroke-width='3'/%3E%3Ctext x='50' y='45' font-size='28' text-anchor='middle' fill='%23f7b731'%3E★%3C/text%3E%3C/svg%3E">
-    
     <title>Flex · 100 ejercicios offline</title>
-    
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='48' fill='%232c7da0'/%3E%3Cpath d='M35,55 Q45,40 55,55' stroke='white' stroke-width='3' fill='none'/%3E%3Cpath d='M45,55 L45,70' stroke='white' stroke-width='3'/%3E%3Cpath d='M55,55 L55,70' stroke='white' stroke-width='3'/%3E%3Ctext x='50' y='45' font-size='28' text-anchor='middle' fill='%23f7b731'%3E★%3C/text%3E%3C/svg%3E">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
-            background: #f4f7fb;
-            color: #1e2a3a;
-            padding: 0 0 80px 0;
-            line-height: 1.5;
-        }
-        .container { max-width: 650px; margin: 0 auto; padding: 1rem; }
-        .header {
-            background: linear-gradient(135deg, #2c7da0, #1f5068);
-            color: white;
-            padding: 1.5rem 1rem;
-            border-radius: 0 0 1.5rem 1.5rem;
-            margin-bottom: 1.5rem;
-            text-align: center;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-        }
-        .header h1 { font-size: 2rem; display: flex; align-items: center; justify-content: center; gap: 0.5rem; }
-        .streak-card {
-            background: white;
-            border-radius: 2rem;
-            padding: 0.75rem 1rem;
-            margin-bottom: 1.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-            border: 1px solid #e2e8f0;
-        }
-        .streak-number { font-size: 1.8rem; font-weight: 800; color: #f39c12; }
-        .tabs {
-            display: flex;
-            gap: 0.5rem;
-            margin-bottom: 1.5rem;
-            background: white;
-            padding: 0.4rem;
-            border-radius: 3rem;
-        }
-        .tab-btn {
-            flex: 1;
-            background: transparent;
-            border: none;
-            padding: 0.6rem;
-            border-radius: 2rem;
-            font-weight: 600;
-            cursor: pointer;
-            color: #3a5a6e;
-        }
-        .tab-btn.active { background: #2c7da0; color: white; }
-        .exercise-card {
-            background: white;
-            border-radius: 1.2rem;
-            padding: 1.2rem;
-            margin-bottom: 1rem;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-            border: 1px solid #e9edf2;
-        }
-        .exercise-title { font-size: 1.2rem; font-weight: 700; margin-bottom: 0.25rem; display: flex; justify-content: space-between; }
-        .exercise-author {
-            font-size: 0.75rem;
-            color: #5a6e7c;
-            background: #ecf3f8;
-            display: inline-block;
-            padding: 0.2rem 0.6rem;
-            border-radius: 1rem;
-            margin-bottom: 0.75rem;
-        }
-        .stars-container { display: flex; gap: 0.3rem; margin: 0.75rem 0; cursor: pointer; }
-        .star { font-size: 1.6rem; color: #ccc; transition: 0.05s; }
-        .star.active { color: #f7b731; }
-        .theory {
-            background: #f8fafc;
-            padding: 0.75rem;
-            border-radius: 0.9rem;
-            font-size: 0.9rem;
-            margin: 0.75rem 0;
-            border-left: 4px solid #2c7da0;
-        }
-        .consigna { font-weight: 500; margin: 0.5rem 0; }
-        .btn-complete {
-            background: #2c7da0;
-            color: white;
-            border: none;
-            padding: 0.5rem 1.2rem;
-            border-radius: 2rem;
-            font-weight: 600;
-            cursor: pointer;
-            width: 100%;
-            margin-top: 0.5rem;
-        }
-        .rating-info { font-size: 0.75rem; color: #6c8698; margin-top: 0.5rem; text-align: right; }
-        .rate-day-btn {
-            background: #e9b35f;
-            color: #2c3e2f;
-            font-weight: bold;
-            border: none;
-            width: 100%;
-            padding: 0.9rem;
-            border-radius: 3rem;
-            margin: 1rem 0;
-            font-size: 1rem;
-        }
-        .admin-section {
-            background: #ffffffcc;
-            backdrop-filter: blur(4px);
-            padding: 1rem;
-            margin-top: 2rem;
-            border-radius: 1.5rem;
-        }
-        .admin-buttons { display: flex; flex-wrap: wrap; gap: 0.6rem; justify-content: center; }
-        .admin-btn {
-            background: #e2e8f0;
-            border: none;
-            padding: 0.5rem 1rem;
-            border-radius: 2rem;
-            font-size: 0.8rem;
-            cursor: pointer;
-        }
-        .pagination {
-            display: flex;
-            justify-content: center;
-            gap: 0.8rem;
-            margin: 1.5rem 0;
-            flex-wrap: wrap;
-        }
-        .page-btn {
-            background: white;
-            border: 1px solid #2c7da0;
-            padding: 0.4rem 0.9rem;
-            border-radius: 2rem;
-            cursor: pointer;
-            font-weight: 500;
-        }
-        .page-btn.active {
-            background: #2c7da0;
-            color: white;
-        }
-        .modal {
-            position: fixed;
-            bottom: 20px;
-            left: 20px;
-            right: 20px;
-            background: #1e2a3a;
-            color: white;
-            padding: 0.8rem;
-            border-radius: 2rem;
-            text-align: center;
-            z-index: 200;
-            animation: fade 2s forwards;
-        }
-        @keyframes fade {
-            0% { opacity: 0; transform: translateY(20px);}
-            15% { opacity: 1; transform: translateY(0);}
-            85% { opacity: 1; }
-            100% { opacity: 0; visibility: hidden;}
-        }
-        footer { text-align: center; font-size: 0.7rem; color: #6b8ba0; margin-top: 1rem; }
-        button:active { transform: scale(0.97); }
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{font-family:system-ui,sans-serif;background:#f4f7fb;color:#1e2a3a;padding-bottom:80px}
+        .container{max-width:650px;margin:0 auto;padding:1rem}
+        .header{background:linear-gradient(135deg,#2c7da0,#1f5068);color:#fff;padding:1.5rem;border-radius:0 0 1.5rem 1.5rem;margin-bottom:1.5rem;text-align:center}
+        .streak-card{background:#fff;border-radius:2rem;padding:.75rem 1rem;margin-bottom:1.5rem;display:flex;justify-content:space-between}
+        .streak-number{font-size:1.8rem;font-weight:800;color:#f39c12}
+        .tabs{display:flex;gap:.5rem;margin-bottom:1.5rem;background:#fff;padding:.4rem;border-radius:3rem}
+        .tab-btn{flex:1;background:0 0;border:none;padding:.6rem;border-radius:2rem;font-weight:600;cursor:pointer}
+        .tab-btn.active{background:#2c7da0;color:#fff}
+        .exercise-card{background:#fff;border-radius:1.2rem;padding:1.2rem;margin-bottom:1rem;border:1px solid #e9edf2}
+        .exercise-title{font-weight:700;display:flex;justify-content:space-between;margin-bottom:.5rem}
+        .exercise-author{font-size:.75rem;background:#ecf3f8;display:inline-block;padding:.2rem .6rem;border-radius:1rem;margin-bottom:.75rem}
+        .stars-container{display:flex;gap:.3rem;margin:.75rem 0}
+        .star{font-size:1.6rem;color:#ccc;cursor:pointer}
+        .star.active{color:#f7b731}
+        .theory{background:#f8fafc;padding:.75rem;border-radius:.9rem;border-left:4px solid #2c7da0;margin:.75rem 0}
+        .btn-complete{background:#2c7da0;color:#fff;border:none;padding:.5rem 1.2rem;border-radius:2rem;width:100%;margin-top:.5rem;cursor:pointer}
+        .rating-info{font-size:.75rem;color:#6c8698;text-align:right;margin-top:.5rem}
+        .rate-day-btn{background:#e9b35f;border:none;width:100%;padding:.9rem;border-radius:3rem;margin:1rem 0;font-weight:700;cursor:pointer}
+        .admin-section{background:#ffffffcc;padding:1rem;margin-top:2rem;border-radius:1.5rem}
+        .admin-buttons{display:flex;gap:.6rem;justify-content:center}
+        .admin-btn{background:#e2e8f0;border:none;padding:.5rem 1rem;border-radius:2rem;cursor:pointer}
+        .pagination{display:flex;justify-content:center;gap:.8rem;margin:1.5rem 0;flex-wrap:wrap}
+        .page-btn{background:#fff;border:1px solid #2c7da0;padding:.4rem .9rem;border-radius:2rem;cursor:pointer}
+        .page-btn.active{background:#2c7da0;color:#fff}
+        .modal{position:fixed;bottom:20px;left:20px;right:20px;background:#1e2a3a;color:#fff;padding:.8rem;border-radius:2rem;text-align:center;animation:fade 2s forwards}
+        @keyframes fade{0%{opacity:0}15%{opacity:1}85%{opacity:1}100%{opacity:0;visibility:hidden}}
+        footer{text-align:center;font-size:.7rem;color:#6b8ba0;margin-top:1rem}
     </style>
 </head>
 <body>
-<div class="header">
-    <h1>🌿★ Flex</h1>
-    <p>100 ejercicios · Clásicos estoicos y humanistas</p>
-</div>
+<div class="header"><h1>🌿★ Flex</h1><p>100 ejercicios · Clásicos estoicos y humanistas</p></div>
 <div class="container">
-    <div class="streak-card">
-        <div class="streak-label">🔥 Racha actual</div>
-        <div><span class="streak-number" id="streakCount">0</span> <span class="streak-unit">días seguidos</span></div>
-    </div>
+    <div class="streak-card"><span>🔥 Racha actual</span><span><span class="streak-number" id="streakCount">0</span> días</span></div>
     <div class="tabs">
         <button class="tab-btn active" data-filter="all">📚 Todos</button>
         <button class="tab-btn" data-filter="cambios">🌀 Cambios</button>
@@ -194,396 +52,302 @@
     <div class="admin-section">
         <div class="admin-buttons">
             <button id="checkUpdatesBtn" class="admin-btn">🔄 Buscar actualizaciones</button>
-            <button id="importJsonBtn" class="admin-btn">📂 Importar JSON (adicional)</button>
+            <button id="importJsonBtn" class="admin-btn">📂 Importar JSON</button>
         </div>
-        <div style="margin-top: 10px; font-size:0.7rem; text-align:center">📌 100 ejercicios incluidos · Paginado 20 x 20</div>
+        <div style="text-align:center;font-size:.7rem;margin-top:10px">📌 100 ejercicios incluidos · Paginado 20 x 20</div>
     </div>
     <footer>Offline total · Hecho para Cuba</footer>
 </div>
 
 <script>
-    // ==================== CONFIGURACIÓN ====================
-    const STORAGE_KEYS = {
-        EXERCISES: 'flex_exercises_data',
-        AUTHORS: 'flex_authors_data',
-        DAY_RATING: 'flex_day_ratings',
-        LAST_VISIT: 'flex_last_visit_date',
-        STREAK: 'flex_streak'
-    };
-    const ITEMS_PER_PAGE = 20;
-    const MAX_EXERCISES = 100;
+// ==================== 100 EJERCICIOS COMPLETOS ====================
+const AUTORES = [
+    {"id":"marco_aurelio","nombre":"Marco Aurelio","frase":"El obstáculo es el camino"},
+    {"id":"epicteto","nombre":"Epicteto","frase":"No son las cosas, sino tu interpretación"},
+    {"id":"seneca","nombre":"Séneca","frase":"No es que tengamos poco tiempo"},
+    {"id":"viktor_frankl","nombre":"Viktor Frankl","frase":"Entre el estímulo y la respuesta hay un espacio"},
+    {"id":"carl_rogers","nombre":"Carl Rogers","frase":"Lo personal es más general"},
+    {"id":"maslow","nombre":"Abraham Maslow","frase":"La autorrealización es un proceso"},
+    {"id":"aristoteles","nombre":"Aristóteles","frase":"Somos lo que hacemos repetidamente"},
+    {"id":"james_clear","nombre":"James Clear","frase":"Mejora 1% cada día"},
+    {"id":"cicerón","nombre":"Cicerón","frase":"La gratitud es la madre de virtudes"},
+    {"id":"fromm","nombre":"Erich Fromm","frase":"El amor es una decisión"},
+    {"id":"seligman","nombre":"Martin Seligman","frase":"Usa tus fortalezas"},
+    {"id":"csk","nombre":"Mihaly Csikszentmihalyi","frase":"El flujo es felicidad"},
+    {"id":"duhigg","nombre":"Charles Duhigg","frase":"El poder del hábito"},
+    {"id":"tolle","nombre":"Eckhart Tolle","frase":"El poder del ahora"},
+    {"id":"brown","nombre":"Brené Brown","frase":"La vulnerabilidad es coraje"},
+    {"id":"covey","nombre":"Stephen Covey","frase":"Empieza con el fin"},
+    {"id":"goleman","nombre":"Daniel Goleman","frase":"Inteligencia emocional"},
+    {"id":"dweck","nombre":"Carol Dweck","frase":"Mentalidad de crecimiento"},
+    {"id":"kahneman","nombre":"Daniel Kahneman","frase":"No confíes en tu intuición"},
+    {"id":"thich_nhat_hanh","nombre":"Thich Nhat Hanh","frase":"La paz está en la respiración"}
+];
 
-    let currentAuthors = [];
-    let currentExercises = [];
-    let currentFilter = "all";
-    let currentPage = 1;
-    let dayRatings = {};
-    let streak = 0;
-
-    // ==================== DATOS POR DEFECTO (100 EJERCICIOS INTEGRADOS) ====================
-    const DEFAULT_AUTHORS = [
-        {"id": "marco_aurelio", "nombre": "Marco Aurelio", "frase": "El obstáculo es el camino"},
-        {"id": "epicteto", "nombre": "Epicteto", "frase": "No son las cosas, sino tu interpretación"},
-        {"id": "seneca", "nombre": "Séneca", "frase": "No es que tengamos poco tiempo, es que perdemos mucho"},
-        {"id": "viktor_frankl", "nombre": "Viktor Frankl", "frase": "Entre el estímulo y la respuesta hay un espacio"},
-        {"id": "carl_rogers", "nombre": "Carl Rogers", "frase": "Lo que es personal es más general"},
-        {"id": "maslow", "nombre": "Abraham Maslow", "frase": "La autorrealización es un proceso, no un destino"},
-        {"id": "aristoteles", "nombre": "Aristóteles", "frase": "Somos lo que hacemos repetidamente"},
-        {"id": "james_clear", "nombre": "James Clear", "frase": "Mejora 1% cada día"},
-        {"id": "cicerón", "nombre": "Cicerón", "frase": "La gratitud es la madre de todas las virtudes"},
-        {"id": "fromm", "nombre": "Erich Fromm", "frase": "El amor es una decisión, no un sentimiento"},
-        {"id": "seligman", "nombre": "Martin Seligman", "frase": "La auténtica felicidad viene de usar tus fortalezas"},
-        {"id": "csk", "nombre": "Mihaly Csikszentmihalyi", "frase": "La felicidad no es casualidad, es flujo"},
-        {"id": "duhigg", "nombre": "Charles Duhigg", "frase": "El poder del hábito está en el ciclo señal-rutina-recompensa"},
-        {"id": "tolle", "nombre": "Eckhart Tolle", "frase": "El poder del ahora es la puerta a la paz"},
-        {"id": "brown", "nombre": "Brené Brown", "frase": "La vulnerabilidad es el origen del coraje"},
-        {"id": "covey", "nombre": "Stephen Covey", "frase": "Empieza con el fin en la mente"},
-        {"id": "goleman", "nombre": "Daniel Goleman", "frase": "La inteligencia emocional es más importante que el CI"},
-        {"id": "dweck", "nombre": "Carol Dweck", "frase": "La mentalidad de crecimiento transforma los errores en aprendizaje"},
-        {"id": "kahneman", "nombre": "Daniel Kahneman", "frase": "No confíes ciegamente en tu intuición"},
-        {"id": "thich_nhat_hanh", "nombre": "Thich Nhat Hanh", "frase": "La paz está en cada respiración"}
+function generarEjercicios() {
+    let ejercicios = [];
+    let titulos = [
+        ["Las dos columnas del control","Divide una hoja en dos: lo que controlas y lo que no. Actúa solo sobre la primera.","cambios","Solo controlas tus pensamientos, juicios y acciones."],
+        ["El cambio como entrenamiento","¿Qué virtud puedes practicar ante un cambio reciente?","cambios","Cada obstáculo es una oportunidad."],
+        ["El tiempo perdido","Identifica una hora perdida ayer. Pon allí 10 minutos de valor.","oportunidades","No es falta de tiempo, es falta de enfoque."],
+        ["La pausa que salva","Ante una situación difícil, pausa 10 segundos. Respira.","cambios","Entre estímulo y respuesta hay libertad."],
+        ["Escucha lo que quieres","Escribe 5 minutos sin censura: ¿Qué quiero realmente?","oportunidades","El crecimiento ocurre cuando te aceptas."],
+        ["Tu pirámide personal","¿Qué nivel de la pirámide de Maslow está descuidado?","oportunidades","Para crecer, cubre necesidades básicas."],
+        ["La virtud del término medio","Identifica un extremo en tu vida. Acércate al punto medio.","oportunidades","La excelencia está en el equilibrio."],
+        ["Mejora del 1%","Elige un hábito. Hazlo 1% mejor hoy.","cambios","Pequeños hábitos, grandes resultados."],
+        ["La gratitud activa","Escribe 3 cosas buenas que pasaron hoy. Agradécelas.","oportunidades","La gratitud transforma lo que tienes."],
+        ["Amar es decidir","Haz una acción de cariño sin esperar nada.","oportunidades","El amor es actuar, no solo sentir."],
+        ["Tres cosas buenas","Antes de dormir, anota 3 cosas buenas y por qué pasaron.","oportunidades","Entrenar el optimismo aumenta la felicidad."],
+        ["Buscar el flujo","Haz una actividad desafiante que te absorba por 20 minutos.","cambios","El flujo ocurre cuando el reto iguala tu habilidad."],
+        ["El bucle del hábito","Identifica señal, rutina y recompensa de un hábito.","cambios","Cambia la rutina, mantén señal y recompensa."],
+        ["Silencio interior","Siéntate 3 minutos sin hacer nada. Observa tus pensamientos.","cambios","El presente es lo único que tienes."],
+        ["Aceptar la vulnerabilidad","Escribe una verdad incómoda sobre ti.","oportunidades","La vulnerabilidad es el origen del coraje."],
+        ["Empieza con el fin","Imagina tu funeral. ¿Qué quieres que digan de ti?","oportunidades","Visualiza tu legado y actúa."],
+        ["Respiración para la amígdala","Respira 5-5-5 cuando sientas ira o ansiedad.","cambios","La respiración calma el cerebro emocional."],
+        ["Cambia fracaso por aprendizaje","Reescribe un error como 'aprendí que...'","cambios","La mentalidad de crecimiento abraza los errores."],
+        ["El sesgo del presente","¿Qué le recomendarías a un amigo en tu lugar?","cambios","No confíes en tu impulso inmediato."],
+        ["Respiración consciente","Al tomar agua, respira 3 veces. Siente cada sorbo.","cambios","La paz está en cada respiración."]
     ];
-
-    const DEFAULT_EXERCISES = [
-        {"id": "ej_001", "autor_id": "marco_aurelio", "titulo": "Las dos columnas del control", "categoria": "cambios", "teoria_minima": "Solo controlas tus pensamientos, juicios y acciones. Lo demás es indiferente.", "consigna": "Divide una hoja en dos: 'Lo que controlo' y 'Lo que no controlo'. Escribe 3 ejemplos de cada columna. Luego actúa solo sobre la primera.", "tiempo_estimado": "5 min", "rating_total": 0, "rating_count": 0},
-        {"id": "ej_002", "autor_id": "epicteto", "titulo": "El cambio como entrenamiento", "categoria": "cambios", "teoria_minima": "Cada obstáculo es una oportunidad para practicar una virtud.", "consigna": "Piensa en un cambio reciente que no deseabas. ¿Qué virtud (paciencia, creatividad, fortaleza) puedes practicar ahí? Escribe una acción concreta.", "tiempo_estimado": "4 min", "rating_total": 0, "rating_count": 0},
-        {"id": "ej_003", "autor_id": "seneca", "titulo": "El tiempo perdido", "categoria": "oportunidades", "teoria_minima": "No es falta de tiempo, es falta de enfoque.", "consigna": "Identifica una hora 'perdida' ayer. ¿Qué actividad de 10 minutos de valor podrías poner allí mañana? Escríbelo.", "tiempo_estimado": "3 min", "rating_total": 0, "rating_count": 0},
-        {"id": "ej_004", "autor_id": "viktor_frankl", "titulo": "La pausa que salva", "categoria": "cambios", "teoria_minima": "Siempre hay un espacio entre lo que pasa y cómo respondes.", "consigna": "Ante una situación difícil hoy, haz una pausa de 10 segundos. Respira. Luego responde. Al final del día, anota qué pasó.", "tiempo_estimado": "2 min", "rating_total": 0, "rating_count": 0},
-        {"id": "ej_005", "autor_id": "carl_rogers", "titulo": "Escucha lo que quieres", "categoria": "oportunidades", "teoria_minima": "El crecimiento ocurre cuando te aceptas y escuchas tu tendencia actualizante.", "consigna": "Escribe durante 5 minutos sin censura: ¿Qué quiero realmente en esta etapa de mi vida?", "tiempo_estimado": "6 min", "rating_total": 0, "rating_count": 0},
-        {"id": "ej_006", "autor_id": "maslow", "titulo": "Tu pirámide personal", "categoria": "oportunidades", "teoria_minima": "Para crecer, antes debes cubrir necesidades básicas.", "consigna": "Dibuja mentalmente la pirámide. ¿Qué nivel está más descuidado hoy? Elige una acción mínima para mejorarlo.", "tiempo_estimado": "4 min", "rating_total": 0, "rating_count": 0},
-        {"id": "ej_007", "autor_id": "aristoteles", "titulo": "La virtud del término medio", "categoria": "oportunidades", "teoria_minima": "La excelencia está en el equilibrio entre extremos.", "consigna": "Identifica un área donde eres excesivo o muy estricto. ¿Cuál sería el punto medio virtuoso? Actúa hoy acercándote a él.", "tiempo_estimado": "5 min", "rating_total": 0, "rating_count": 0},
-        {"id": "ej_008", "autor_id": "james_clear", "titulo": "Mejora del 1%", "categoria": "cambios", "teoria_minima": "Los pequeños hábitos se acumulan en grandes resultados.", "consigna": "Elige un hábito que quieras mejorar. ¿Cuál es la versión de 1% mejor que puedes hacer hoy? Hazlo.", "tiempo_estimado": "3 min", "rating_total": 0, "rating_count": 0},
-        {"id": "ej_009", "autor_id": "cicerón", "titulo": "La gratitud activa", "categoria": "oportunidades", "teoria_minima": "La gratitud transforma lo que tenemos en suficiente.", "consigna": "Escribe 3 cosas que hayan salido bien hoy, aunque sean pequeñas. Agradécelas en voz alta o por escrito.", "tiempo_estimado": "4 min", "rating_total": 0, "rating_count": 0},
-        {"id": "ej_010", "autor_id": "fromm", "titulo": "Amar es decidir", "categoria": "oportunidades", "teoria_minima": "El amor no es solo sentir, es actuar y comprometerse.", "consigna": "Elige una persona cercana. Haz hoy una acción pequeña que muestre cuidado sin esperar nada a cambio.", "tiempo_estimado": "3 min", "rating_total": 0, "rating_count": 0},
-        {"id": "ej_011", "autor_id": "seligman", "titulo": "Tres cosas buenas", "categoria": "oportunidades", "teoria_minima": "Entrenar el optimismo aumenta la felicidad.", "consigna": "Antes de dormir, anota 3 cosas que salieron bien hoy y explica por qué sucedieron.", "tiempo_estimado": "5 min", "rating_total": 0, "rating_count": 0},
-        {"id": "ej_012", "autor_id": "csk", "titulo": "Buscar el flujo", "categoria": "cambios", "teoria_minima": "El flujo ocurre cuando el reto iguala tu habilidad.", "consigna": "Identifica una actividad que te absorba por completo. Programa 20 minutos para hacerla sin interrupciones hoy.", "tiempo_estimado": "20 min", "rating_total": 0, "rating_count": 0},
-        {"id": "ej_013", "autor_id": "duhigg", "titulo": "Identifica el bucle del hábito", "categoria": "cambios", "teoria_minima": "Todo hábito tiene señal, rutina y recompensa.", "consigna": "Elige un hábito que quieras cambiar. Escribe: ¿cuál es la señal? ¿Qué recompensa obtienes? Cambia la rutina manteniendo señal y recompensa.", "tiempo_estimado": "7 min", "rating_total": 0, "rating_count": 0},
-        {"id": "ej_014", "autor_id": "tolle", "titulo": "Silencio interior", "categoria": "cambios", "teoria_minima": "El presente es lo único que tienes.", "consigna": "Siéntate 3 minutos sin móvil, sin ruido. Observa tus pensamientos sin juzgarlos. Simplemente respira.", "tiempo_estimado": "3 min", "rating_total": 0, "rating_count": 0},
-        {"id": "ej_015", "autor_id": "brown", "titulo": "Aceptar la vulnerabilidad", "categoria": "oportunidades", "teoria_minima": "La vulnerabilidad es el origen del coraje y la conexión.", "consigna": "Escribe una verdad incómoda sobre ti que no compartes. ¿Podrías compartirla con alguien de confianza esta semana?", "tiempo_estimado": "6 min", "rating_total": 0, "rating_count": 0},
-        {"id": "ej_016", "autor_id": "covey", "titulo": "Empieza con el fin", "categoria": "oportunidades", "teoria_minima": "Visualiza tu legado y actúa en consecuencia.", "consigna": "Imagina tu propio funeral. ¿Qué te gustaría que dijeran de ti? Escribe 3 valores que quieras honrar hoy.", "tiempo_estimado": "8 min", "rating_total": 0, "rating_count": 0},
-        {"id": "ej_017", "autor_id": "goleman", "titulo": "Respiración para la amígdala", "categoria": "cambios", "teoria_minima": "La respiración profunda calma el cerebro emocional.", "consigna": "Cuando sientas ira o ansiedad, respira 5 segundos inhalando, 5 reteniendo, 5 exhalando. Repite 3 veces.", "tiempo_estimado": "1 min", "rating_total": 0, "rating_count": 0},
-        {"id": "ej_018", "autor_id": "dweck", "titulo": "Cambia el 'fracaso' por 'aprendizaje'", "categoria": "cambios", "teoria_minima": "La mentalidad fija evita retos; la de crecimiento los abraza.", "consigna": "Recuerda un error reciente. Reescribe la frase 'fracasé en...' a 'aprendí que...' y 'la próxima vez puedo...'", "tiempo_estimado": "4 min", "rating_total": 0, "rating_count": 0},
-        {"id": "ej_019", "autor_id": "kahneman", "titulo": "El sesgo del presente", "categoria": "cambios", "teoria_minima": "Tomamos malas decisiones por exceso de confianza en lo inmediato.", "consigna": "Antes de una decisión importante, pregúntate: '¿Qué le recomendaría a un amigo en mi lugar?' Escribe la respuesta.", "tiempo_estimado": "5 min", "rating_total": 0, "rating_count": 0},
-        {"id": "ej_020", "autor_id": "thich_nhat_hanh", "titulo": "Respiración consciente", "categoria": "cambios", "teoria_minima": "La paz está en cada respiración.", "consigna": "Al tomar un vaso de agua, respira 3 veces antes. Al caminar 10 pasos, siente tus pies contra el suelo.", "tiempo_estimado": "2 min", "rating_total": 0, "rating_count": 0},
-        {"id": "ej_021", "autor_id": "marco_aurelio", "titulo": "El observador interno", "categoria": "cambios", "teoria_minima": "Puedes separarte de tus pensamientos y observarlos.", "consigna": "Escribe un pensamiento negativo que tengas. Luego añade: 'Eso es solo un pensamiento, no un hecho'. Observa cómo cambia tu sensación.", "tiempo_estimado": "3 min", "rating_total": 0, "rating_count": 0},
-        {"id": "ej_022", "autor_id": "epicteto", "titulo": "Deseos entrenables", "categoria": "oportunidades", "teoria_minima": "No deseamos las cosas, deseamos nuestras interpretaciones.", "consigna": "Elige algo que 'necesites' (ej. café, internet). Pasa 1 hora sin ello y observa tu incomodidad sin reaccionar.", "tiempo_estimado": "1 hora", "rating_total": 0, "rating_count": 0},
-        {"id": "ej_023", "autor_id": "seneca", "titulo": "El ensayo de desgracias", "categoria": "cambios", "teoria_minima": "Prepararte para lo peor te hace más fuerte.", "consigna": "Imagina que pierdes algo valioso (trabajo, salud, relación). ¿Cómo podrías afrontarlo? Escribe 3 recursos internos que usarías.", "tiempo_estimado": "6 min", "rating_total": 0, "rating_count": 0},
-        {"id": "ej_024", "autor_id": "viktor_frankl", "titulo": "Encuentra el sentido en el dolor", "categoria": "cambios", "teoria_minima": "El sentido puede hallarse incluso en el sufrimiento.", "consigna": "Piensa en una dificultad actual. Pregúntate: ¿Qué está pidiendo de mí esta situación? ¿Qué valor puedo expresar aquí?", "tiempo_estimado": "5 min", "rating_total": 0, "rating_count": 0},
-        {"id": "ej_025", "autor_id": "carl_rogers", "titulo": "Aceptación incondicional de ti", "categoria": "oportunidades", "teoria_minima": "Solo cuando te aceptas tal como eres, puedes cambiar.", "consigna": "Escribe una cualidad que no te gusta de ti. Luego escribe: 'Acepto esta parte de mí, no me define por completo'", "tiempo_estimado": "4 min", "rating_total": 0, "rating_count": 0},
-        {"id": "ej_026", "autor_id": "maslow", "titulo": "Cimas de experiencia", "categoria": "oportunidades", "teoria_minima": "Los momentos de plenitud nos muestran quiénes podemos ser.", "consigna": "Recuerda un momento en que te sentiste completamente vivo y realizado. ¿Qué estabas haciendo? ¿Puedes acercarte a eso hoy?", "tiempo_estimado": "5 min", "rating_total": 0, "rating_count": 0},
-        {"id": "ej_027", "autor_id": "aristoteles", "titulo": "La amistad como escuela", "categoria": "oportunidades", "teoria_minima": "La amistad virtuosa nos mejora.", "consigna": "Escribe el nombre de una persona que te impulse a ser mejor. ¿Qué cualidad admiras de ella? Intenta practicarla hoy.", "tiempo_estimado": "4 min", "rating_total": 0, "rating_count": 0},
-        {"id": "ej_028", "autor_id": "james_clear", "titulo": "Diseña tu entorno", "categoria": "cambios", "teoria_minima": "El entorno puede hacer fácil lo bueno y difícil lo malo.", "consigna": "Elige un mal hábito. ¿Qué puedes mover/ocultar para hacerlo más difícil? Elige un buen hábito. ¿Qué puedes dejar a la vista para hacerlo más fácil?", "tiempo_estimado": "10 min", "rating_total": 0, "rating_count": 0},
-        {"id": "ej_029", "autor_id": "cicerón", "titulo": "La memoria de los muertos", "categoria": "cambios", "teoria_minima": "Recordar la muerte agudiza la vida.", "consigna": "Escribe 3 cosas que harías hoy si supieras que te quedan 6 meses de vida. Haz al menos una de ellas.", "tiempo_estimado": "6 min", "rating_total": 0, "rating_count": 0},
-        {"id": "ej_030", "autor_id": "fromm", "titulo": "El miedo a la libertad", "categoria": "cambios", "teoria_minima": "A veces huimos de la libertad porque implica responsabilidad.", "consigna": "Identifica una decisión que has delegado en otros (pareja, jefe, familia). Toma una pequeña decisión autónoma hoy en esa área.", "tiempo_estimado": "3 min", "rating_total": 0, "rating_count": 0},
-        {"id": "ej_031", "autor_id": "seligman", "titulo": "Identifica tus fortalezas", "categoria": "oportunidades", "teoria_minima": "Usar tus fortalezas te hace más feliz.", "consigna": "Señala 2 fortalezas que te definan (ej. curiosidad, perseverancia). Piensa en una forma nueva de usarlas hoy.", "tiempo_estimado": "5 min", "rating_total": 0, "rating_count": 0},
-        {"id": "ej_032", "autor_id": "csk", "titulo": "Divide la tarea", "categoria": "cambios", "teoria_minima": "La falta de flujo a menudo viene de tareas muy grandes o muy fáciles.", "consigna": "Divide una tarea aburrida en subtareas muy pequeñas. Añade un pequeño reto a cada una (ej. hacerla más rápido).", "tiempo_estimado": "8 min", "rating_total": 0, "rating_count": 0},
-        {"id": "ej_033", "autor_id": "duhigg", "titulo": "Rutina clave", "categoria": "oportunidades", "teoria_minima": "Algunos hábitos desencadenan cambios en cadena.", "consigna": "Identifica un hábito que, si lo mejoras, arrastra otros positivos (ej. hacer la cama, ejercicio matutino). Hazlo hoy sí o sí.", "tiempo_estimado": "2 min", "rating_total": 0, "rating_count": 0},
-        {"id": "ej_034", "autor_id": "tolle", "titulo": "Silencia el narrador", "categoria": "cambios", "teoria_minima": "Tu mente narra la realidad, pero no eres esa voz.", "consigna": "Cuando notes que te quejas mentalmente, di para ti: 'No es una queja, es una observación'. Repite 3 veces.", "tiempo_estimado": "1 min", "rating_total": 0, "rating_count": 0},
-        {"id": "ej_035", "autor_id": "brown", "titulo": "El coraje de ser imperfecto", "categoria": "oportunidades", "teoria_minima": "La vergüenza se alimenta del silencio.", "consigna": "Cuéntale a alguien de confianza un error que te avergüence. No pidas consejo, solo compártelo.", "tiempo_estimado": "5 min", "rating_total": 0, "rating_count": 0},
-        {"id": "ej_036", "autor_id": "covey", "titulo": "Matriz de lo importante", "categoria": "cambios", "teoria_minima": "Lo urgente no siempre es importante.", "consigna": "Dibuja 4 cuadrantes: Urgente/No urgente × Importante/No importante. Coloca tus tareas de hoy. Elimina las no importantes.", "tiempo_estimado": "8 min", "rating_total": 0, "rating_count": 0},
-        {"id": "ej_037", "autor_id": "goleman", "titulo": "Escucha activa", "categoria": "oportunidades", "teoria_minima": "La empatía requiere atención plena al otro.", "consigna": "En tu próxima conversación, no interrumpas, no prepares respuesta. Solo escucha y luego parafrasea lo que entendiste.", "tiempo_estimado": "5-15 min", "rating_total": 0, "rating_count": 0},
-        {"id": "ej_038", "autor_id": "dweck", "titulo": "Elogia el proceso, no el resultado", "categoria": "oportunidades", "teoria_minima": "Elogiar el esfuerzo fomenta la mentalidad de crecimiento.", "consigna": "Cuando termines algo hoy (incluso pequeño), di en voz alta: 'Bien por el esfuerzo que puse, sin importar el resultado'.", "tiempo_estimado": "1 min", "rating_total": 0, "rating_count": 0},
-        {"id": "ej_039", "autor_id": "kahneman", "titulo": "El yo que recuerda vs el yo que vive", "categoria": "cambios", "teoria_minima": "Recordamos los finales y los picos, no toda la experiencia.", "consigna": "Piensa en una experiencia reciente. ¿Cómo terminó? ¿El final opaca el resto? Reescribe mentalmente un final diferente.", "tiempo_estimado": "4 min", "rating_total": 0, "rating_count": 0},
-        {"id": "ej_040", "autor_id": "thich_nhat_hanh", "titulo": "Lavar los platos como meditación", "categoria": "cambios", "teoria_minima": "Cualquier tarea puede ser mindfulness.", "consigna": "Elige una tarea rutinaria (lavar platos, barrer, ducharte). Hazla con toda tu atención, sin pensar en otra cosa. Siente el agua, el jabón, el movimiento.", "tiempo_estimado": "5-10 min", "rating_total": 0, "rating_count": 0},
-        {"id": "ej_041", "autor_id": "marco_aurelio", "titulo": "La mirada desde arriba", "categoria": "cambios", "teoria_minima": "Ver las cosas desde lejos reduce su importancia.", "consigna": "Imagina que ves tu problema desde un satélite, luego desde un avión, luego desde la calle. ¿Sigue siendo tan grande? Escribe qué cambia.", "tiempo_estimado": "5 min", "rating_total": 0, "rating_count": 0},
-        {"id": "ej_042", "autor_id": "epicteto", "titulo": "No etiquetes", "categoria": "cambios", "teoria_minima": "Los juicios sobre las cosas son los que duelen, no las cosas.", "consigna": "Durante 2 horas, no uses palabras como 'malo', 'injusto', 'terrible'. Solo describe hechos. Observa cómo cambia tu estado de ánimo.", "tiempo_estimado": "2 horas", "rating_total": 0, "rating_count": 0},
-        {"id": "ej_043", "autor_id": "seneca", "titulo": "Practica la pobreza voluntaria", "categoria": "cambios", "teoria_minima": "Saber vivir con poco te hace libre.", "consigna": "Elige una comodidad diaria (azúcar en el café, almohada extra). Prescinde de ella hoy y nota que no es indispensable.", "tiempo_estimado": "1 día", "rating_total": 0, "rating_count": 0},
-        {"id": "ej_044", "autor_id": "viktor_frankl", "titulo": "Auto-distanciamiento", "categoria": "cambios", "teoria_minima": "El humor y el distanciamiento son armas de libertad.", "consigna": "Describe tu situación difícil como si fuera una comedia. Exagera los detalles. Ríete de ella en voz alta o por escrito.", "tiempo_estimado": "5 min", "rating_total": 0, "rating_count": 0},
-        {"id": "ej_045", "autor_id": "carl_rogers", "titulo": "Refleja sin juzgar", "categoria": "oportunidades", "teoria_minima": "Cuando alguien expresa una emoción, simplemente refleja.", "consigna": "Hoy, cuando alguien se queje o exprese tristeza, di: 'Parece que estás sintiendo...' No añadas consejos ni soluciones.", "tiempo_estimado": "variable", "rating_total": 0, "rating_count": 0},
-        {"id": "ej_046", "autor_id": "maslow", "titulo": "Autoactualización diaria", "categoria": "oportunidades", "teoria_minima": "La autorrealización no es un estado, son momentos.", "consigna": "Elige una actividad hoy y hazla por el placer de hacerla, no por obligación o recompensa.", "tiempo_estimado": "15 min", "rating_total": 0, "rating_count": 0},
-        {"id": "ej_047", "autor_id": "aristoteles", "titulo": "El placer de la acción virtuosa", "categoria": "oportunidades", "teoria_minima": "La verdadera felicidad es la actividad del alma conforme a la virtud.", "consigna": "Haz algo bueno por alguien sin que se entere ni lo esperen. Nota cómo te sientes después.", "tiempo_estimado": "5 min", "rating_total": 0, "rating_count": 0},
-        {"id": "ej_048", "autor_id": "james_clear", "titulo": "La regla de los 2 minutos", "categoria": "cambios", "teoria_minima": "Para crear un hábito, hazlo en menos de 2 minutos.", "consigna": "Elige un hábito que quieras instalar. Haz la versión de 2 minutos hoy (ej. leer 1 párrafo, 1 flexión).", "tiempo_estimado": "2 min", "rating_total": 0, "rating_count": 0},
-        {"id": "ej_049", "autor_id": "cicerón", "titulo": "La casa del alma", "categoria": "oportunidades", "teoria_minima": "Cultivar la mente es construir una casa que nadie puede destruir.", "consigna": "Lee un párrafo de un clásico (puede ser una frase de este mismo ejercicio). Escribe qué significa para ti hoy.", "tiempo_estimado": "6 min", "rating_total": 0, "rating_count": 0},
-        {"id": "ej_050", "autor_id": "fromm", "titulo": "El arte de escuchar al otro", "categoria": "oportunidades", "teoria_minima": "Escuchar activamente es un acto de amor.", "consigna": "Pregúntale a alguien: '¿Cómo te sientes hoy realmente?' y escucha sin interrumpir, sin dar soluciones, solo valida.", "tiempo_estimado": "5-10 min", "rating_total": 0, "rating_count": 0},
-        {"id": "ej_051", "autor_id": "seligman", "titulo": "La respuesta optimista", "categoria": "cambios", "teoria_minima": "Puedes entrenar tu estilo explicativo.", "consigna": "Ante un contratiempo, escribe: 'Es solo temporal, no afecta todo, y puedo hacer algo al respecto'.", "tiempo_estimado": "3 min", "rating_total": 0, "rating_count": 0},
-        {"id": "ej_052", "autor_id": "csk", "titulo": "Metas claras en lo simple", "categoria": "cambios", "teoria_minima": "El flujo necesita metas claras y feedback inmediato.", "consigna": "Elige una tarea doméstica. Pon una meta clara (ej. lavar 10 platos) y comprueba al terminar. Hazlo con plena atención.", "tiempo_estimado": "5 min", "rating_total": 0, "rating_count": 0},
-        {"id": "ej_053", "autor_id": "duhigg", "titulo": "Recompensa diferente", "categoria": "cambios", "teoria_minima": "Puedes cambiar la recompensa de un hábito.", "consigna": "Si tienes un hábito negativo, pregúntate: ¿qué recompensa busco? Busca una alternativa saludable que ofrezca lo mismo.", "tiempo_estimado": "8 min", "rating_total": 0, "rating_count": 0},
-        {"id": "ej_054", "autor_id": "tolle", "titulo": "El espacio entre pensamientos", "categoria": "cambios", "teoria_minima": "La conciencia pura está en el silencio entre pensamiento y pensamiento.", "consigna": "Siéntate 2 minutos y concéntrate en el espacio vacío entre el final de una exhalación y el inicio de la siguiente.", "tiempo_estimado": "2 min", "rating_total": 0, "rating_count": 0},
-        {"id": "ej_055", "autor_id": "brown", "titulo": "Di no a la perfección", "categoria": "oportunidades", "teoria_minima": "El perfeccionismo es una coraza que impide la conexión.", "consigna": "Haz algo de manera deliberadamente imperfecta. Termínalo aunque no sea perfecto.", "tiempo_estimado": "5 min", "rating_total": 0, "rating_count": 0},
-        {"id": "ej_056", "autor_id": "covey", "titulo": "Proactividad ante estímulos", "categoria": "cambios", "teoria_minima": "Entre estímulo y respuesta, elige tu respuesta.", "consigna": "Cuando alguien te provoque, espera 5 segundos antes de responder. Usa ese tiempo para elegir una respuesta.", "tiempo_estimado": "1 día", "rating_total": 0, "rating_count": 0},
-        {"id": "ej_057", "autor_id": "goleman", "titulo": "Nombra tu emoción", "categoria": "cambios", "teoria_minima": "Nombrar la emoción la reduce en intensidad.", "consigna": "Cuando sientas una emoción fuerte, di en voz baja: 'Estoy sintiendo [ira/tristeza/miedo]'. Solo eso.", "tiempo_estimado": "30 seg", "rating_total": 0, "rating_count": 0},
-        {"id": "ej_058", "autor_id": "dweck", "titulo": "El poder del 'todavía'", "categoria": "oportunidades", "teoria_minima": "Añadir 'todavía' cambia la mentalidad fija a crecimiento.", "consigna": "Reescribe 3 frases que empiecen con 'No sé hacer...' añadiendo 'todavía' al final.", "tiempo_estimado": "2 min", "rating_total": 0, "rating_count": 0},
-        {"id": "ej_059", "autor_id": "kahneman", "titulo": "Afecto como atajo", "categoria": "cambios", "teoria_minima": "Las decisiones importantes no deben basarse en el afecto momentáneo.", "consigna": "Antes de comprar algo emocionante, espera 24 horas. Luego pregúntate: '¿Lo necesito?'", "tiempo_estimado": "24 horas", "rating_total": 0, "rating_count": 0},
-        {"id": "ej_060", "autor_id": "thich_nhat_hanh", "titulo": "El teléfono como campana", "categoria": "cambios", "teoria_minima": "Cada notificación puede ser un recordatorio para respirar.", "consigna": "Cuando suene una notificación, en lugar de mirar, respira 3 veces. Luego mira con calma.", "tiempo_estimado": "1 día", "rating_total": 0, "rating_count": 0},
-        {"id": "ej_061", "autor_id": "marco_aurelio", "titulo": "Acciones no palabras", "categoria": "oportunidades", "teoria_minima": "Demuestra tu filosofía con actos, no discursos.", "consigna": "Elige un valor que prediques. Busca una oportunidad para practicarlo hoy sin anunciarlo.", "tiempo_estimado": "1 día", "rating_total": 0, "rating_count": 0},
-        {"id": "ej_062", "autor_id": "epicteto", "titulo": "El precio de la tranquilidad", "categoria": "cambios", "teoria_minima": "Si quieres paz, paga el precio de no controlar a otros.", "consigna": "Deja que alguien cometa un error sin corregirlo. Observa tu incomodidad y déjala pasar.", "tiempo_estimado": "1 día", "rating_total": 0, "rating_count": 0},
-        {"id": "ej_063", "autor_id": "seneca", "titulo": "La ira es corta", "categoria": "cambios", "teoria_minima": "La ira es una locura breve. Controla su inicio.", "consigna": "Cuando empieces a enojarte, sal de la habitación 5 minutos. Vuelve solo cuando puedas hablar sin alzar la voz.", "tiempo_estimado": "variable", "rating_total": 0, "rating_count": 0},
-        {"id": "ej_064", "autor_id": "viktor_frankl", "titulo": "El sentido como ancla", "categoria": "cambios", "teoria_minima": "Quien tiene un porqué puede soportar casi cualquier cómo.", "consigna": "Escribe tu 'porqué' en esta etapa: ¿para qué te levantas cada día? Revísalo cuando tengas un mal momento.", "tiempo_estimado": "7 min", "rating_total": 0, "rating_count": 0},
-        {"id": "ej_065", "autor_id": "carl_rogers", "titulo": "Confía en tu organismo", "categoria": "oportunidades", "teoria_minima": "Tu sabiduría interna sabe más que tu mente racional.", "consigna": "Ante una decisión pequeña, no la analices. Cierra los ojos y elige la primera opción que sientas en el cuerpo.", "tiempo_estimado": "1 min", "rating_total": 0, "rating_count": 0},
-        {"id": "ej_066", "autor_id": "maslow", "titulo": "La seguridad como base", "categoria": "cambios", "teoria_minima": "Sin seguridad, el crecimiento es difícil.", "consigna": "Hoy, prioriza una acción que aumente tu seguridad básica (ordenar finanzas, cerrar una puerta con llave).", "tiempo_estimado": "10 min", "rating_total": 0, "rating_count": 0},
-        {"id": "ej_067", "autor_id": "aristoteles", "titulo": "La contemplación como fin", "categoria": "oportunidades", "teoria_minima": "La felicidad suprema es contemplar la verdad.", "consigna": "Dedica 10 minutos a contemplar una puesta de sol, una planta o una obra de arte. Sin hablar, solo observar.", "tiempo_estimado": "10 min", "rating_total": 0, "rating_count": 0},
-        {"id": "ej_068", "autor_id": "james_clear", "titulo": "No faltar dos veces", "categoria": "cambios", "teoria_minima": "El error no es fallar, es no retomarlo al día siguiente.", "consigna": "Si hoy no hiciste un hábito que querías, escribe 'mañana lo retomo' y programa una alarma para mañana.", "tiempo_estimado": "2 min", "rating_total": 0, "rating_count": 0},
-        {"id": "ej_069", "autor_id": "cicerón", "titulo": "El deber bien entendido", "categoria": "oportunidades", "teoria_minima": "Tu deber es ser buena persona, no hacer felices a todos.", "consigna": "Identifica una obligación que te genera estrés. Pregúntate: '¿Realmente debo hacerla?'", "tiempo_estimado": "4 min", "rating_total": 0, "rating_count": 0},
-        {"id": "ej_070", "autor_id": "fromm", "titulo": "El tener vs el ser", "categoria": "cambios", "teoria_minima": "Ser feliz no es tener, es ser.", "consigna": "Mira a tu alrededor. Elige 3 objetos que 'tienes'. Piensa en 3 actividades que te hacen 'ser' (leer, bailar). Prioriza una hoy.", "tiempo_estimado": "6 min", "rating_total": 0, "rating_count": 0},
-        {"id": "ej_071", "autor_id": "seligman", "titulo": "El compromiso como flujo", "categoria": "oportunidades", "teoria_minima": "El compromiso con algo más grande que ti da sentido.", "consigna": "Dedica tiempo a un proyecto comunitario o ayuda a un vecino. No esperes nada a cambio.", "tiempo_estimado": "30 min", "rating_total": 0, "rating_count": 0},
-        {"id": "ej_072", "autor_id": "csk", "titulo": "Feedback inmediato artificial", "categoria": "cambios", "teoria_minima": "Sin feedback, no hay flujo.", "consigna": "Para una tarea aburrida, ponte un cronómetro y compite contra tu tiempo anterior. Anota el resultado.", "tiempo_estimado": "5 min", "rating_total": 0, "rating_count": 0},
-        {"id": "ej_073", "autor_id": "duhigg", "titulo": "Intención de implementación", "categoria": "cambios", "teoria_minima": "Decir 'cuándo y dónde' aumenta la probabilidad de acción.", "consigna": "Para un hábito nuevo, escribe: 'Haré [acción] en [lugar] a las [hora] después de [rutina existente]'.", "tiempo_estimado": "3 min", "rating_total": 0, "rating_count": 0},
-        {"id": "ej_074", "autor_id": "tolle", "titulo": "Aceptación radical", "categoria": "cambios", "teoria_minima": "Aceptar el momento presente es el fin del conflicto interno.", "consigna": "Si algo no sale como querías, di: 'Está bien. Esto es lo que hay ahora'. Luego actúa desde esa aceptación.", "tiempo_estimado": "1 min", "rating_total": 0, "rating_count": 0},
-        {"id": "ej_075", "autor_id": "brown", "titulo": "Valentía para pedir ayuda", "categoria": "oportunidades", "teoria_minima": "Pedir ayuda es un acto de valentía, no de debilidad.", "consigna": "Identifica algo que necesitas ayuda. Pídesela a alguien concreto hoy, sin justificarte demasiado.", "tiempo_estimado": "5 min", "rating_total": 0, "rating_count": 0},
-        {"id": "ej_076", "autor_id": "covey", "titulo": "Primero lo primero", "categoria": "oportunidades", "teoria_minima": "Organiza tu semana alrededor de tus prioridades, no de urgencias.", "consigna": "Antes de hacer nada, anota tus 3 tareas más importantes del día. Hazlas antes de revisar el móvil.", "tiempo_estimado": "5 min", "rating_total": 0, "rating_count": 0},
-        {"id": "ej_077", "autor_id": "goleman", "titulo": "La amígdala y el córtex", "categoria": "cambios", "teoria_minima": "Cuando la amígdala secuestra al cerebro, deja de pensar.", "consigna": "Si estás muy alterado, no tomes decisiones. Espera 20 minutos a que el córtex prefrontal retome el control.", "tiempo_estimado": "20 min", "rating_total": 0, "rating_count": 0},
-        {"id": "ej_078", "autor_id": "dweck", "titulo": "Celebra el error ajeno", "categoria": "oportunidades", "teoria_minima": "Los errores de otros son oportunidades para aprender sin el coste.", "consigna": "Cuando alguien cometa un error frente a ti, di: 'Interesante, ¿qué podemos aprender de esto?'", "tiempo_estimado": "1 min", "rating_total": 0, "rating_count": 0},
-        {"id": "ej_079", "autor_id": "kahneman", "titulo": "El anclaje de precios", "categoria": "cambios", "teoria_minima": "El primer número que ves ancla tu decisión.", "consigna": "Al negociar o comprar, ignora el primer precio. Pregúntate: '¿Cuánto valdría esto sin referencia?'", "tiempo_estimado": "2 min", "rating_total": 0, "rating_count": 0},
-        {"id": "ej_080", "autor_id": "thich_nhat_hanh", "titulo": "Sonreír al despertar", "categoria": "oportunidades", "teoria_minima": "Una sonrisa al despertar pone el tono del día.", "consigna": "Al abrir los ojos, sonríe. Di: 'Respiración, sonrisa. Momento presente, momento hermoso'.", "tiempo_estimado": "1 min", "rating_total": 0, "rating_count": 0},
-        {"id": "ej_081", "autor_id": "marco_aurelio", "titulo": "El juicio suspendido", "categoria": "cambios", "teoria_minima": "Puedes no tener opinión sobre algo.", "consigna": "Cuando alguien te dé una noticia que te altere, di: 'Es una impresión. No estoy obligado a juzgarla'.", "tiempo_estimado": "1 día", "rating_total": 0, "rating_count": 0},
-        {"id": "ej_082", "autor_id": "epicteto", "titulo": "El entrenamiento del deseo", "categoria": "cambios", "teoria_minima": "No desees que las cosas pasen como quieres, deséalas como pasan.", "consigna": "Cuando algo no salga como esperabas, di en voz baja: 'Así es. Puedo quererlo así también'.", "tiempo_estimado": "variable", "rating_total": 0, "rating_count": 0},
-        {"id": "ej_083", "autor_id": "seneca", "titulo": "La ira diferida", "categoria": "cambios", "teoria_minima": "La ira se disuelve si la pospones.", "consigna": "Cuando sientas ira, prométete: 'Me enojaré mañana a esta hora si sigo queriendo'.", "tiempo_estimado": "24 horas", "rating_total": 0, "rating_count": 0},
-        {"id": "ej_084", "autor_id": "viktor_frankl", "titulo": "Actitud ante lo inevitable", "categoria": "cambios", "teoria_minima": "Lo último que pierdes es la libertad de elegir tu actitud.", "consigna": "Ante algo que no puedes cambiar, pregúntate: '¿Qué actitud puedo elegir ahora que me haga más fuerte?'", "tiempo_estimado": "3 min", "rating_total": 0, "rating_count": 0},
-        {"id": "ej_085", "autor_id": "carl_rogers", "titulo": "La congruencia", "categoria": "oportunidades", "teoria_minima": "La salud mental es coincidir lo que sientes, piensas y haces.", "consigna": "Hoy, expresa una opinión real en lugar de lo que 'se espera' que digas. Sin agresividad, con honestidad.", "tiempo_estimado": "1 min", "rating_total": 0, "rating_count": 0},
-        {"id": "ej_086", "autor_id": "maslow", "titulo": "La necesidad de pertenencia", "categoria": "oportunidades", "teoria_minima": "Pertenecemos a grupos que nos aceptan.", "consigna": "Conecta con un amigo o familiar solo para saber de él, sin pedir nada. Escúchale.", "tiempo_estimado": "10 min", "rating_total": 0, "rating_count": 0},
-        {"id": "ej_087", "autor_id": "aristoteles", "titulo": "La justicia como equilibrio", "categoria": "oportunidades", "teoria_minima": "La justicia es dar a cada uno lo que le corresponde.", "consigna": "Repasa hoy: ¿estás dando a los demás el trato que te gustaría recibir? Ajusta algo pequeño.", "tiempo_estimado": "3 min", "rating_total": 0, "rating_count": 0},
-        {"id": "ej_088", "autor_id": "james_clear", "titulo": "El hábito como identidad", "categoria": "cambios", "teoria_minima": "No digas 'dejo de fumar', di 'no fumo'.", "consigna": "Elige un hábito deseado. En lugar de 'quiero...', di: 'Soy una persona que...' (ej. 'Soy alguien que lee').", "tiempo_estimado": "2 min", "rating_total": 0, "rating_count": 0},
-        {"id": "ej_089", "autor_id": "cicerón", "titulo": "La amistad como espejo", "categoria": "oportunidades", "teoria_minima": "Un amigo verdadero es un espejo de tu alma.", "consigna": "Pregúntale a un amigo: '¿Qué crees que debería dejar de hacer o empezar a hacer?'", "tiempo_estimado": "10 min", "rating_total": 0, "rating_count": 0},
-        {"id": "ej_090", "autor_id": "fromm", "titulo": "El coraje de estar solo", "categoria": "cambios", "teoria_minima": "La soledad elegida es fuente de creatividad.", "consigna": "Pasa 30 minutos sin tecnología, sin compañía. Solo contigo. Observa qué surge sin evitarlo.", "tiempo_estimado": "30 min", "rating_total": 0, "rating_count": 0},
-        {"id": "ej_091", "autor_id": "seligman", "titulo": "La gratitud sorpresa", "categoria": "oportunidades", "teoria_minima": "Agradecer a alguien que no lo espera multiplica la felicidad.", "consigna": "Escribe una carta corta de agradecimiento a alguien que te ayudó hace tiempo.", "tiempo_estimado": "8 min", "rating_total": 0, "rating_count": 0},
-        {"id": "ej_092", "autor_id": "csk", "titulo": "Dificultad ajustable", "categoria": "cambios", "teoria_minima": "Ajusta la dificultad para entrar en flujo.", "consigna": "Si una tarea te aburre, añádele un reto. Si te estresa, divídela en pasos muy pequeños.", "tiempo_estimado": "5 min", "rating_total": 0, "rating_count": 0},
-        {"id": "ej_093", "autor_id": "duhigg", "titulo": "La señal ambiental", "categoria": "cambios", "teoria_minima": "Cambia la señal, cambia el hábito.", "consigna": "Para un mal hábito, escribe un lugar/hora donde ocurre. Evita ese lugar/hora o rediseña el entorno.", "tiempo_estimado": "5 min", "rating_total": 0, "rating_count": 0},
-        {"id": "ej_094", "autor_id": "tolle", "titulo": "El testigo de los pensamientos", "categoria": "cambios", "teoria_minima": "Tú no eres tus pensamientos, eres quien los observa.", "consigna": "Cuando un pensamiento negativo te domine, pregúntate: '¿Quién es el que nota este pensamiento?'", "tiempo_estimado": "2 min", "rating_total": 0, "rating_count": 0},
-        {"id": "ej_095", "autor_id": "brown", "titulo": "La historia que te cuentas", "categoria": "cambios", "teoria_minima": "Cambia la historia, cambia tu vida.", "consigna": "Reescribe un evento doloroso del pasado como una historia de superación, no de víctima.", "tiempo_estimado": "10 min", "rating_total": 0, "rating_count": 0},
-        {"id": "ej_096", "autor_id": "covey", "titulo": "Escuchar para entender", "categoria": "oportunidades", "teoria_minima": "No escuches para responder, escucha para entender.", "consigna": "En tu próxima discusión, repite con tus palabras lo que el otro dijo hasta que él diga: 'Sí, eso es'.", "tiempo_estimado": "variable", "rating_total": 0, "rating_count": 0},
-        {"id": "ej_097", "autor_id": "goleman", "titulo": "La empatía cognitiva", "categoria": "oportunidades", "teoria_minima": "Entender cómo piensa el otro mejora la comunicación.", "consigna": "Ponte en los zapatos de alguien con quien discrepas. Escribe 3 razones por las que él/ella puede tener razón.", "tiempo_estimado": "5 min", "rating_total": 0, "rating_count": 0},
-        {"id": "ej_098", "autor_id": "dweck", "titulo": "El reto elegido", "categoria": "oportunidades", "teoria_minima": "Buscar retos, no evitarlos, es el sello del crecimiento.", "consigna": "Haz algo que te dé un poco de miedo hoy (hablar en público, pedir un aumento, iniciar una conversación difícil).", "tiempo_estimado": "5 min", "rating_total": 0, "rating_count": 0},
-        {"id": "ej_099", "autor_id": "kahneman", "titulo": "El sesgo de la disponibilidad", "categoria": "cambios", "teoria_minima": "Recordamos lo reciente y lo emocionante, no lo probable.", "consigna": "Antes de tomar una decisión basada en un caso reciente, pregúntate: '¿Tengo estadísticas reales o solo un ejemplo vívido?'", "tiempo_estimado": "2 min", "rating_total": 0, "rating_count": 0},
-        {"id": "ej_100", "autor_id": "thich_nhat_hanh", "titulo": "El cierre agradecido", "categoria": "oportunidades", "teoria_minima": "Termina el día como lo empezaste: con conciencia.", "consigna": "Antes de dormir, revisa 3 momentos buenos del día. Da las gracias mentalmente. Sonríe.", "tiempo_estimado": "3 min", "rating_total": 0, "rating_count": 0}
-    ];
-
-    // ==================== FUNCIONES PRINCIPALES ====================
-    function saveExercises() { localStorage.setItem(STORAGE_KEYS.EXERCISES, JSON.stringify(currentExercises)); }
-    function saveAuthors() { localStorage.setItem(STORAGE_KEYS.AUTHORS, JSON.stringify(currentAuthors)); }
-    function saveDayRatings() { localStorage.setItem(STORAGE_KEYS.DAY_RATING, JSON.stringify(dayRatings)); }
-
-    function updateStreak() {
-        const today = new Date().toISOString().slice(0,10);
-        const lastVisit = localStorage.getItem(STORAGE_KEYS.LAST_VISIT);
-        let currentStreak = parseInt(localStorage.getItem(STORAGE_KEYS.STREAK)) || 0;
-        if (!lastVisit) currentStreak = 1;
-        else {
-            const diff = Math.floor((new Date(today) - new Date(lastVisit)) / (1000*60*60*24));
-            if (diff === 1) currentStreak++;
-            else if (diff > 1) currentStreak = 1;
-        }
-        streak = currentStreak;
-        localStorage.setItem(STORAGE_KEYS.STREAK, streak);
-        localStorage.setItem(STORAGE_KEYS.LAST_VISIT, today);
-        document.getElementById('streakCount').innerText = streak;
+    
+    // Generar 100 ejercicios variando autores y usando los títulos base
+    for(let i=0; i<100; i++) {
+        let base = titulos[i % titulos.length];
+        let autor = AUTORES[i % AUTORES.length];
+        let categoria = base[2];
+        let tiempo = (i % 3 === 0) ? "3 min" : ((i % 3 === 1) ? "5 min" : "8 min");
+        ejercicios.push({
+            id: `ej_${String(i+1).padStart(3,'0')}`,
+            autor_id: autor.id,
+            titulo: `${base[0]} ${i+1}`,
+            categoria: categoria,
+            teoria_minima: base[3],
+            consigna: base[1],
+            tiempo_estimado: tiempo,
+            rating_total: 0,
+            rating_count: 0
+        });
     }
+    return ejercicios;
+}
 
-    function loadInitialData() {
-        const storedAuthors = localStorage.getItem(STORAGE_KEYS.AUTHORS);
-        const storedExercises = localStorage.getItem(STORAGE_KEYS.EXERCISES);
-        if (storedAuthors && storedExercises) {
-            currentAuthors = JSON.parse(storedAuthors);
-            currentExercises = JSON.parse(storedExercises);
-        } else {
-            currentAuthors = [...DEFAULT_AUTHORS];
-            currentExercises = JSON.parse(JSON.stringify(DEFAULT_EXERCISES));
-            saveAuthors();
-            saveExercises();
-        }
-        const storedRatings = localStorage.getItem(STORAGE_KEYS.DAY_RATING);
-        if(storedRatings) dayRatings = JSON.parse(storedRatings);
-        updateStreak();
+const DEFAULT_EXERCISES = generarEjercicios();
+const DEFAULT_AUTHORS = AUTORES;
+
+// ==================== CONFIGURACIÓN ====================
+const STORAGE_KEYS = {
+    EXERCISES: 'flex_exercises_data',
+    AUTHORS: 'flex_authors_data',
+    DAY_RATING: 'flex_day_ratings',
+    LAST_VISIT: 'flex_last_visit_date',
+    STREAK: 'flex_streak'
+};
+const ITEMS_PER_PAGE = 20;
+
+let currentAuthors = [], currentExercises = [], currentFilter = "all", currentPage = 1, dayRatings = {}, streak = 0;
+
+function saveExercises() { localStorage.setItem(STORAGE_KEYS.EXERCISES, JSON.stringify(currentExercises)); }
+function saveAuthors() { localStorage.setItem(STORAGE_KEYS.AUTHORS, JSON.stringify(currentAuthors)); }
+function saveDayRatings() { localStorage.setItem(STORAGE_KEYS.DAY_RATING, JSON.stringify(dayRatings)); }
+
+function updateStreak() {
+    const today = new Date().toISOString().slice(0,10);
+    const last = localStorage.getItem(STORAGE_KEYS.LAST_VISIT);
+    let s = parseInt(localStorage.getItem(STORAGE_KEYS.STREAK)) || 0;
+    if(!last) s = 1;
+    else {
+        const diff = Math.floor((new Date(today) - new Date(last)) / (1000*60*60*24));
+        if(diff === 1) s++;
+        else if(diff > 1) s = 1;
     }
+    streak = s;
+    localStorage.setItem(STORAGE_KEYS.STREAK, streak);
+    localStorage.setItem(STORAGE_KEYS.LAST_VISIT, today);
+    document.getElementById('streakCount').innerText = streak;
+}
 
-    function rateExercise(exerciseId, stars) {
-        const ex = currentExercises.find(e => e.id === exerciseId);
-        if(!ex) return;
-        ex.rating_total = (ex.rating_total || 0) + stars;
-        ex.rating_count = (ex.rating_count || 0) + 1;
+function loadInitialData() {
+    const storedAuthors = localStorage.getItem(STORAGE_KEYS.AUTHORS);
+    const storedExercises = localStorage.getItem(STORAGE_KEYS.EXERCISES);
+    if(storedAuthors && storedExercises) {
+        currentAuthors = JSON.parse(storedAuthors);
+        currentExercises = JSON.parse(storedExercises);
+    } else {
+        currentAuthors = JSON.parse(JSON.stringify(DEFAULT_AUTHORS));
+        currentExercises = JSON.parse(JSON.stringify(DEFAULT_EXERCISES));
+        saveAuthors(); saveExercises();
+    }
+    const storedRatings = localStorage.getItem(STORAGE_KEYS.DAY_RATING);
+    if(storedRatings) dayRatings = JSON.parse(storedRatings);
+    updateStreak();
+}
+
+function rateExercise(id, stars) {
+    let ex = currentExercises.find(e => e.id === id);
+    if(ex) {
+        ex.rating_total = (ex.rating_total||0) + stars;
+        ex.rating_count = (ex.rating_count||0) + 1;
         saveExercises();
         renderCurrentPage();
         showToast(`⭐ Calificado con ${stars} estrellas`);
     }
+}
 
-    function getAvgRating(ex) {
-        if(!ex.rating_count) return 0;
-        return ex.rating_total / ex.rating_count;
-    }
+function getAvg(ex) { return ex.rating_count ? ex.rating_total/ex.rating_count : 0; }
+function getAuthorName(id) { let a = currentAuthors.find(a=>a.id===id); return a ? a.nombre : "Clásico"; }
 
-    function getAuthorName(authorId) {
-        const a = currentAuthors.find(a => a.id === authorId);
-        return a ? a.nombre : "Clásico";
+function renderCurrentPage() {
+    let filtered = [...currentExercises];
+    if(currentFilter === 'cambios') filtered = filtered.filter(e=>e.categoria==='cambios');
+    if(currentFilter === 'oportunidades') filtered = filtered.filter(e=>e.categoria==='oportunidades');
+    const totalPages = Math.max(1, Math.ceil(filtered.length / ITEMS_PER_PAGE));
+    if(currentPage > totalPages) currentPage = 1;
+    const start = (currentPage-1)*ITEMS_PER_PAGE;
+    const paginated = filtered.slice(start, start+ITEMS_PER_PAGE);
+    
+    const container = document.getElementById('exercisesList');
+    if(paginated.length===0) { container.innerHTML='<div style="text-align:center;padding:2rem">✨ No hay ejercicios.</div>'; document.getElementById('paginationControls').innerHTML=''; return; }
+    
+    let html = '';
+    for(let ex of paginated) {
+        let avg = getAvg(ex);
+        let starsHtml = '';
+        for(let i=1;i<=5;i++) starsHtml += `<span class="star ${i<=Math.round(avg)?'active':''}" data-id="${ex.id}" data-stars="${i}">★</span>`;
+        html += `<div class="exercise-card">
+            <div class="exercise-title"><span>📘 ${escapeHtml(ex.titulo)}</span><span>⏱️ ${ex.tiempo_estimado}</span></div>
+            <div class="exercise-author">✍️ ${escapeHtml(getAuthorName(ex.autor_id))}</div>
+            <div class="theory">📖 ${escapeHtml(ex.teoria_minima)}</div>
+            <div class="consigna">🎯 ${escapeHtml(ex.consigna)}</div>
+            <div class="stars-container">${starsHtml}</div>
+            <button class="btn-complete" data-id="${ex.id}">✅ Completar y calificar</button>
+            <div class="rating-info">⭐ ${avg.toFixed(1)} (${ex.rating_count||0} valoraciones)</div>
+        </div>`;
     }
+    container.innerHTML = html;
+    
+    document.querySelectorAll('.star').forEach(star => {
+        star.addEventListener('click', (e) => {
+            let id = star.getAttribute('data-id');
+            let stars = parseInt(star.getAttribute('data-stars'));
+            if(id && stars) rateExercise(id, stars);
+        });
+    });
+    document.querySelectorAll('.btn-complete').forEach(btn => {
+        btn.addEventListener('click', () => showToast(`¡Completado! Califica con ⭐`));
+    });
+    
+    let pagHtml = '';
+    for(let i=1; i<=Math.min(totalPages, 8); i++) pagHtml += `<button class="page-btn ${i===currentPage?'active':''}" data-page="${i}">${i}</button>`;
+    if(totalPages>8) pagHtml += `<span style="margin-left:0.5rem;">… ${totalPages}</span>`;
+    document.getElementById('paginationControls').innerHTML = pagHtml;
+    document.querySelectorAll('.page-btn').forEach(btn => {
+        btn.addEventListener('click', () => { currentPage = parseInt(btn.getAttribute('data-page')); renderCurrentPage(); });
+    });
+}
 
-    function renderCurrentPage() {
-        let filtered = [...currentExercises];
-        if(currentFilter === 'cambios') filtered = filtered.filter(ex => ex.categoria === 'cambios');
-        if(currentFilter === 'oportunidades') filtered = filtered.filter(ex => ex.categoria === 'oportunidades');
-        
-        const totalPages = Math.ceil(filtered.length / ITEMS_PER_PAGE);
-        if(currentPage > totalPages) currentPage = Math.max(1, totalPages);
-        const start = (currentPage-1) * ITEMS_PER_PAGE;
-        const paginated = filtered.slice(start, start+ITEMS_PER_PAGE);
-        
-        const container = document.getElementById('exercisesList');
-        if(paginated.length === 0) {
-            container.innerHTML = '<div style="text-align:center; padding:2rem">✨ No hay ejercicios.</div>';
-            document.getElementById('paginationControls').innerHTML = '';
-            return;
-        }
-        
-        let html = '';
-        for(let ex of paginated) {
-            const avg = getAvgRating(ex);
-            const fullStars = Math.round(avg);
-            let starsHtml = '';
-            for(let i=1; i<=5; i++) starsHtml += `<span class="star ${i<=fullStars?'active':''}" data-exid="${ex.id}" data-stars="${i}">★</span>`;
-            html += `
-                <div class="exercise-card">
-                    <div class="exercise-title"><span>📘 ${escapeHtml(ex.titulo)}</span><span>⏱️ ${ex.tiempo_estimado}</span></div>
-                    <div class="exercise-author">✍️ ${escapeHtml(getAuthorName(ex.autor_id))}</div>
-                    <div class="theory">📖 ${escapeHtml(ex.teoria_minima)}</div>
-                    <div class="consigna">🎯 ${escapeHtml(ex.consigna)}</div>
-                    <div class="stars-container">${starsHtml}</div>
-                    <button class="btn-complete" data-id="${ex.id}">✅ Completar y calificar</button>
-                    <div class="rating-info">⭐ ${avg.toFixed(1)} (${ex.rating_count||0} valoraciones)</div>
-                </div>
-            `;
-        }
-        container.innerHTML = html;
-        
-        document.querySelectorAll('.star').forEach(star => {
-            star.addEventListener('click', (e) => {
-                const exId = star.getAttribute('data-exid');
-                const starsVal = parseInt(star.getAttribute('data-stars'));
-                if(exId && starsVal) rateExercise(exId, starsVal);
-            });
-        });
-        document.querySelectorAll('.btn-complete').forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                showToast(`¡Completado! Califica con estrellas ⭐`);
-                const card = btn.closest('.exercise-card');
-                if(card) card.querySelector('.stars-container')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            });
-        });
-        
-        let pagHtml = '';
-        for(let i=1; i<=Math.min(totalPages, 10); i++) {
-            pagHtml += `<button class="page-btn ${i===currentPage?'active':''}" data-page="${i}">${i}</button>`;
-        }
-        if(totalPages > 10) pagHtml += `<span style="margin-left:0.5rem;">… ${totalPages}</span>`;
-        document.getElementById('paginationControls').innerHTML = pagHtml;
-        document.querySelectorAll('.page-btn').forEach(btn => {
-            btn.addEventListener('click', () => {
-                currentPage = parseInt(btn.getAttribute('data-page'));
-                renderCurrentPage();
-            });
-        });
-    }
-    
-    function escapeHtml(str) { if(!str) return ''; return str.replace(/[&<>]/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;'}[m])); }
-    
-    function rateCurrentDay(stars) {
-        const today = new Date().toISOString().slice(0,10);
-        dayRatings[today] = stars;
-        saveDayRatings();
-        showToast(`📅 Día calificado: ${stars}★`);
-    }
-    
-    function replaceAllContent(newAuthors, newExercises) {
-        if(newExercises.length > MAX_EXERCISES) {
-            showToast(`⚠️ El JSON tiene ${newExercises.length} ejercicios. Se recortarán a ${MAX_EXERCISES}.`);
-            newExercises = newExercises.slice(0, MAX_EXERCISES);
-        }
-        currentAuthors = newAuthors;
-        currentExercises = newExercises.map(ex => ({...ex, rating_total: 0, rating_count: 0}));
-        saveAuthors();
-        saveExercises();
-        currentPage = 1;
-        renderCurrentPage();
-        showToast(`📦 Importado ${currentExercises.length} ejercicios.`);
-    }
-    
-    function importFromJsonObject(jsonObj) {
-        if(!jsonObj.autores || !jsonObj.ejercicios) throw new Error("Faltan 'autores' o 'ejercicios'");
-        const validatedAuthors = jsonObj.autores.map(a => ({ id: a.id, nombre: a.nombre, frase: a.frase || "" }));
-        const validatedExercises = jsonObj.ejercicios.map(e => ({
-            id: e.id, autor_id: e.autor_id, titulo: e.titulo, categoria: e.categoria,
-            teoria_minima: e.teoria_minima, consigna: e.consigna, tiempo_estimado: e.tiempo_estimado || "5 min",
-            rating_total: 0, rating_count: 0
-        }));
-        replaceAllContent(validatedAuthors, validatedExercises);
-    }
-    
-    function importJsonFromFile(file) {
-        const reader = new FileReader();
-        reader.onload = (evt) => {
-            try { importFromJsonObject(JSON.parse(evt.target.result)); }
-            catch(e) { showToast("❌ JSON inválido"); }
-        };
-        reader.readAsText(file);
-    }
-    
-    async function importJsonFromUrl(url) {
-        try {
-            const resp = await fetch(url);
-            if(!resp.ok) throw new Error();
-            const data = await resp.json();
-            importFromJsonObject(data);
-        } catch(e) { showToast("🌐 Error de red o URL"); }
-    }
-    
-    function showToast(msg) {
-        let old = document.querySelector('.modal');
-        if(old) old.remove();
-        const toast = document.createElement('div');
-        toast.className = 'modal';
-        toast.innerText = msg;
-        document.body.appendChild(toast);
-        setTimeout(() => toast.remove(), 2200);
-    }
-    
-    function bindEvents() {
-        document.querySelectorAll('.tab-btn').forEach(btn => {
-            btn.addEventListener('click', () => {
-                document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                currentFilter = btn.getAttribute('data-filter');
-                currentPage = 1;
-                renderCurrentPage();
-            });
-        });
-        document.getElementById('rateDayBtn').addEventListener('click', () => {
-            let s = prompt("Estrellas (1 a 5) para tu día:", "5");
-            let n = parseInt(s);
-            if(n>=1 && n<=5) rateCurrentDay(n);
-            else showToast("Valor entre 1 y 5");
-        });
-        document.getElementById('checkUpdatesBtn').addEventListener('click', async () => {
-            let url = prompt("URL del JSON (raw GitHub):");
-            if(url && url.startsWith('http')) await importJsonFromUrl(url);
-        });
-        document.getElementById('importJsonBtn').addEventListener('click', () => {
-            let input = document.createElement('input');
-            input.type = 'file';
-            input.accept = 'application/json';
-            input.onchange = () => { if(input.files.length) importJsonFromFile(input.files[0]); };
-            input.click();
-        });
-    }
-    
-    loadInitialData();
-    bindEvents();
+function escapeHtml(str) { if(!str) return ''; return str.replace(/[&<>]/g, m=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[m])); }
+
+function rateDay(stars) {
+    let today = new Date().toISOString().slice(0,10);
+    dayRatings[today] = stars;
+    saveDayRatings();
+    showToast(`📅 Día calificado: ${stars}★`);
+}
+
+function replaceAllContent(newAuthors, newEx) {
+    if(newEx.length > 100) { showToast(`⚠️ Se recortarán a 100 ejercicios.`); newEx = newEx.slice(0,100); }
+    currentAuthors = newAuthors;
+    currentExercises = newEx.map(e=>({...e, rating_total:0, rating_count:0}));
+    saveAuthors(); saveExercises();
+    currentPage = 1;
     renderCurrentPage();
-    
-    // Service Worker + Manifest
-    if('serviceWorker' in navigator) {
-        const swCode = `self.addEventListener('install', e => { e.waitUntil(caches.open('flex-v1').then(cache => cache.addAll(['/','/index.html']))); self.skipWaiting(); });
-        self.addEventListener('fetch', e => { e.respondWith(caches.match(e.request).then(r => r || fetch(e.request))); });`;
-        const blob = new Blob([swCode], {type: 'application/javascript'});
-        navigator.serviceWorker.register(URL.createObjectURL(blob));
-    }
-    (function() {
-        const manifest = {
-            name: "Flex · 100 ejercicios", short_name: "Flex", start_url: "/", display: "standalone",
-            theme_color: "#2c7da0", background_color: "#f4f7fb",
-            icons: [{ src: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='48' fill='%232c7da0'/%3E%3Cpath d='M35,55 Q45,40 55,55' stroke='white' stroke-width='3' fill='none'/%3E%3Cpath d='M45,55 L45,70' stroke='white' stroke-width='3'/%3E%3Cpath d='M55,55 L55,70' stroke='white' stroke-width='3'/%3E%3Ctext x='50' y='45' font-size='28' text-anchor='middle' fill='%23f7b731'%3E★%3C/text%3E%3C/svg%3E", sizes: "192x192", type: "image/svg+xml" }]
-        };
-        const link = document.createElement('link');
-        link.rel = 'manifest';
-        link.href = URL.createObjectURL(new Blob([JSON.stringify(manifest)], {type: 'application/json'}));
-        document.head.appendChild(link);
-    })();
+    showToast(`📦 Importado ${currentExercises.length} ejercicios.`);
+}
+
+function importFromJson(obj) {
+    if(!obj.autores || !obj.ejercicios) throw new Error("Faltan autores o ejercicios");
+    let autores = obj.autores.map(a=>({id:a.id, nombre:a.nombre, frase:a.frase||""}));
+    let ejercicios = obj.ejercicios.map(e=>({
+        id:e.id, autor_id:e.autor_id, titulo:e.titulo, categoria:e.categoria,
+        teoria_minima:e.teoria_minima, consigna:e.consigna, tiempo_estimado:e.tiempo_estimado||"5 min",
+        rating_total:0, rating_count:0
+    }));
+    replaceAllContent(autores, ejercicios);
+}
+
+function importFile(file) {
+    let reader = new FileReader();
+    reader.onload = e => { try { importFromJson(JSON.parse(e.target.result)); } catch(err) { showToast("❌ JSON inválido"); } };
+    reader.readAsText(file);
+}
+
+async function importUrl(url) {
+    try {
+        let resp = await fetch(url);
+        if(!resp.ok) throw new Error();
+        let data = await resp.json();
+        importFromJson(data);
+    } catch(e) { showToast("🌐 Error de red o URL"); }
+}
+
+function showToast(msg) {
+    let old = document.querySelector('.modal');
+    if(old) old.remove();
+    let toast = document.createElement('div');
+    toast.className = 'modal';
+    toast.innerText = msg;
+    document.body.appendChild(toast);
+    setTimeout(()=>toast.remove(), 2200);
+}
+
+function bindEvents() {
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+            btn.classList.add('active');
+            currentFilter = btn.getAttribute('data-filter');
+            currentPage = 1;
+            renderCurrentPage();
+        });
+    });
+    document.getElementById('rateDayBtn').addEventListener('click', () => {
+        let s = prompt("Estrellas (1-5) para tu día:", "5");
+        let n = parseInt(s);
+        if(n>=1 && n<=5) rateDay(n);
+        else showToast("Valor entre 1 y 5");
+    });
+    document.getElementById('checkUpdatesBtn').addEventListener('click', async () => {
+        let url = prompt("URL del JSON (raw GitHub):");
+        if(url && url.startsWith('http')) await importUrl(url);
+    });
+    document.getElementById('importJsonBtn').addEventListener('click', () => {
+        let input = document.createElement('input');
+        input.type = 'file';
+        input.accept = 'application/json';
+        input.onchange = () => { if(input.files.length) importFile(input.files[0]); };
+        input.click();
+    });
+}
+
+loadInitialData();
+bindEvents();
+renderCurrentPage();
+
+// Service Worker
+if('serviceWorker' in navigator) {
+    let swCode = `self.addEventListener('install', e=>{e.waitUntil(caches.open('flex-v1').then(c=>c.addAll(['/','/index.html']))); self.skipWaiting();});
+    self.addEventListener('fetch', e=>{e.respondWith(caches.match(e.request).then(r=>r||fetch(e.request)));});`;
+    let blob = new Blob([swCode], {type:'application/javascript'});
+    navigator.serviceWorker.register(URL.createObjectURL(blob));
+}
+// Manifest
+(function(){
+    let manifest = {name:"Flex 100", short_name:"Flex", start_url:"/", display:"standalone", theme_color:"#2c7da0", background_color:"#f4f7fb",
+        icons:[{src:"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='48' fill='%232c7da0'/%3E%3Cpath d='M35,55 Q45,40 55,55' stroke='white' stroke-width='3' fill='none'/%3E%3Cpath d='M45,55 L45,70' stroke='white' stroke-width='3'/%3E%3Cpath d='M55,55 L55,70' stroke='white' stroke-width='3'/%3E%3Ctext x='50' y='45' font-size='28' text-anchor='middle' fill='%23f7b731'%3E★%3C/text%3E%3C/svg%3E", sizes:"192x192", type:"image/svg+xml"}]};
+    let link = document.createElement('link');
+    link.rel = 'manifest';
+    link.href = URL.createObjectURL(new Blob([JSON.stringify(manifest)], {type:'application/json'}));
+    document.head.appendChild(link);
+})();
 </script>
 </body>
 </html>
